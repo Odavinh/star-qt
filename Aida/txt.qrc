@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/memory">
+        <file>memory.txt</file>
+    </qresource>
+</RCC>
