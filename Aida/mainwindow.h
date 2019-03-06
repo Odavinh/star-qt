@@ -6,6 +6,7 @@
 #include"memory.h"
 #include<QVector>
 #include<algorithm>
+#include<random>
 
 namespace Ui {
 class MainWindow;
@@ -21,7 +22,6 @@ public:
 
     void showUserMessage(const QString &str);
     void showBotMessage(const QString &str);
-    int Chrome(const QString &str);
 
 private slots:
     void on_radio_work_clicked();
@@ -43,7 +43,13 @@ private:
     memory *mmr = new memory;
     learn *lrn = new learn;
 
-    QVector<QString> strVect;
+    QVector<QString> ansverVect;
+    QVector<QString> Keywords;
+
+    QVector<QString> ansRand;
+    QVector<QString> workRand;
+    QVector<QString> lernRand;
+
     QString namebot;
     QString userName;
     QString text_edit;

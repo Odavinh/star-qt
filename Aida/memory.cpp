@@ -15,7 +15,10 @@ QString memory::find_map(const QString &str){
     QString temp;
     std::map<QString, QString>::iterator it;
     it = MapMemoru.find(str.toLower());
-    return it->second;
+    if(it != MapMemoru.end())
+        return it->second;
+    else
+        return " ";
 }
 
 void memory::append(const QString &question, const QString &respond){
@@ -40,7 +43,7 @@ void memory::write_file()
     if(mamory_Z->open(QIODevice::WriteOnly | QIODevice::Text)){
         foreach (auto it, MapMemoru)
         {
-            mrstr_Z << it.second.toLower() + "\n";
+            mrstr_Z << it.second + "\n";
         }
         mamory_Z->close();
     }
@@ -92,6 +95,29 @@ void memory::read_the_file()
 
     delete memory_k;
     delete memory_Z;
+}
+
+int memory::Chrome(const QString &str)
+{
+    QString temp = "start chrome /new-window www." + str;
+    QByteArray arr = temp.toLocal8Bit();
+    const char *c_str = arr.data();
+    if(temp != "" && temp != " "){
+        system(c_str);
+        return 1;
+    }
+    return 0;
+}
+int memory::open_program(const QString &str){
+
+    QString temp = "start " + str;
+    QByteArray arr = temp.toLocal8Bit();
+    const char *c_str = arr.data();
+    if(temp != "" && temp != " "){
+        system(c_str);
+        return 1;
+    }
+    return 0;
 }
 
 

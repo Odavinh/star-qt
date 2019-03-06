@@ -15,6 +15,8 @@ public:
     void erase(const QString &str);
     QString find_map(const QString &str);
     void append(const QString &question, const QString &respond);
+    int Chrome(const QString &str);
+    int open_program(const QString &str);
 
 
 private:
