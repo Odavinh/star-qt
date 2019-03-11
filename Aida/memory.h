@@ -6,6 +6,7 @@
 #include<QDataStream>
 #include<QStringList>
 
+
 class memory
 {
 public:

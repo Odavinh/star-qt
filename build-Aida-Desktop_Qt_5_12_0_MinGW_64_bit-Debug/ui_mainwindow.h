@@ -23,7 +23,6 @@
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTextEdit>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -49,15 +48,15 @@ public:
     QLineEdit *question_line;
     QLineEdit *ansver_line;
     QSpacerItem *horizontalSpacer_3;
+    QPushButton *Button_inf;
     QMenuBar *menuBar;
     QMenu *menu;
-    QToolBar *mainToolBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(423, 517);
+        MainWindow->resize(423, 526);
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         exit = new QAction(MainWindow);
@@ -126,7 +125,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 403, 338));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 403, 360));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_2->setSpacing(1);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -138,7 +137,7 @@ public:
         font.setFamily(QString::fromUtf8("Times New Roman"));
         font.setPointSize(12);
         Text_message->setFont(font);
-        Text_message->setStyleSheet(QString::fromUtf8(" background-color:qlineargradient(spread:pad, x1:0.578652, y1:1, x2:1, y2:1, stop:0.0730337 rgba(255, 255, 255, 255), stop:1 rgba(131, 186, 255, 255));"));
+        Text_message->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_2->addWidget(Text_message);
 
@@ -154,7 +153,6 @@ public:
         question_line->setMinimumSize(QSize(0, 25));
         question_line->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
 "border:1px solid #01576E;\n"
-" background-color:qlineargradient(spread:pad, x1:0.578652, y1:1, x2:1, y2:1, stop:0.0730337 rgba(255, 255, 255, 255), stop:1 rgba(131, 186, 255, 255));\n"
 "color:rgba(0,84,110,0.1);\n"
 "\n"
 "}\n"
@@ -170,7 +168,6 @@ public:
         ansver_line->setMinimumSize(QSize(0, 25));
         ansver_line->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
 "border:1px solid #01576E;\n"
-" background-color:qlineargradient(spread:pad, x1:0.578652, y1:1, x2:1, y2:1, stop:0.0730337 rgba(255, 255, 255, 255), stop:1 rgba(131, 186, 255, 255));\n"
 "color:rgba(0,84,110,0.1);\n"
 "\n"
 "}\n"
@@ -188,6 +185,31 @@ public:
 
         gridLayout->addItem(horizontalSpacer_3, 3, 2, 1, 1);
 
+        Button_inf = new QPushButton(centralWidget);
+        Button_inf->setObjectName(QString::fromUtf8("Button_inf"));
+        Button_inf->setMinimumSize(QSize(40, 25));
+        Button_inf->setMaximumSize(QSize(40, 16777215));
+        QFont font1;
+        font1.setPointSize(10);
+        font1.setBold(true);
+        font1.setWeight(75);
+        Button_inf->setFont(font1);
+        Button_inf->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"   border:2px solid rgba(99,148,125,0,9);\n"
+"    background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.786517 rgba(0, 157, 205, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"    color:blac;\n"
+"}\n"
+"QPushButton:hover{\n"
+" background-color:qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.904494 rgba(0, 157, 205, 255), stop:1 rgba(255, 255, 255, 255));\n"
+" border:2px solid rgba(99,148,125,0,9);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0.595506 rgba(0, 151, 197, 255), stop:1 rgba(255, 255, 255, 255));\n"
+" border:2px solid rgba(99,148,125,0,9);\n"
+"}"));
+
+        gridLayout->addWidget(Button_inf, 0, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -195,9 +217,6 @@ public:
         menu = new QMenu(menuBar);
         menu->setObjectName(QString::fromUtf8("menu"));
         MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
 
         menuBar->addAction(menu->menuAction());
         menu->addAction(exit);
@@ -214,6 +233,7 @@ public:
         radio_work->setText(QApplication::translate("MainWindow", "Work", nullptr));
         radio_learn->setText(QApplication::translate("MainWindow", "Learn", nullptr));
         Button_send->setText(QApplication::translate("MainWindow", "Send", nullptr));
+        Button_inf->setText(QApplication::translate("MainWindow", "?", nullptr));
         menu->setTitle(QApplication::translate("MainWindow", "Bot", nullptr));
     } // retranslateUi
 

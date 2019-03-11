@@ -4,9 +4,11 @@
 #include <QMainWindow>
 #include"learn.h"
 #include"memory.h"
+#include"login.h"
 #include<QVector>
 #include<algorithm>
 #include<random>
+#include<QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -38,6 +40,8 @@ private slots:
 
 
 
+    void on_Button_inf_clicked();
+
 private:
     Ui::MainWindow *ui;
     memory *mmr = new memory;
@@ -53,6 +57,8 @@ private:
     QString namebot;
     QString userName;
     QString text_edit;
+
+    bool message;
 
     QColor *userColor = new QColor;
     QColor *botColor = new QColor;

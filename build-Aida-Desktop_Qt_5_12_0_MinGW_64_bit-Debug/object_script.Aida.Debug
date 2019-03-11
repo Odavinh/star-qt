@@ -1,0 +1,10 @@
+debug/main.o
+debug/mainwindow.o
+debug/memory.o
+debug/learn.o
+debug/login.o
+debug/showmemory.o
+debug/qrc_img.o
+debug/moc_mainwindow.o
+debug/moc_login.o
+debug/moc_showmemory.o

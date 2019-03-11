@@ -28,15 +28,18 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     memory.cpp \
-    learn.cpp
+    learn.cpp \
+    login.cpp
 
 HEADERS += \
         mainwindow.h \
     memory.h \
-    learn.h
+    learn.h \
+    login.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    login.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

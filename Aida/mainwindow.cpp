@@ -10,8 +10,12 @@ MainWindow::MainWindow(QWidget *parent) :
     mmr->read_the_file();
     lrn->read_learn_file();
 
+    Login *window_login = new Login();
+    window_login->show();
+    window_login->exec();
+
     namebot = "Aida";
-    userName = "User";
+    userName = window_login->login_name();
 
     userColor->setRgb(41,240,54);
     botColor->setRgb(255,0,0);
@@ -23,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->radio_work->setChecked(true);
     ui->ansver_line->hide();
+    ui->Button_inf->hide();
 
     ui->question_line->setText(tr("Question"));
     ui->ansver_line->setText(tr("Ansver"));
@@ -80,6 +85,7 @@ void MainWindow::showUserMessage(const QString &str){
 
 void MainWindow::on_radio_work_clicked()
 {
+    ui->Button_inf->hide();
     ui->ansver_line->hide();
     ui->Text_message->clear();
     ui->Text_message->setText(text_edit);
@@ -88,7 +94,12 @@ void MainWindow::on_radio_work_clicked()
 
 void MainWindow::on_radio_learn_clicked()
 {
+    if(message){
+        on_Button_inf_clicked();
+        message = false;
+    }
     ui->Text_message->clear();
+    ui->Button_inf->show();
     ui->ansver_line->show();
     if(!ansverVect.empty()){
         QString *temp = new QString(tr("Я не знаю відповіді на ці запитання!!\n"));
@@ -145,7 +156,9 @@ void MainWindow::on_Button_send_clicked()//Button
             }else {
                 showBotMessage(ansver);
                 foreach (auto i,Keywords ) {
-                    bool result_equal_keywords = std::equal(i.begin(), i.end(),ansver.begin());
+                    bool result_equal_keywords = std::equal(i.begin(),
+                                                            i.end(),
+                                                            ansver.begin());
                     if(result_equal_keywords){
                         ansver.remove(i + " ");//Видалення ключового слова із строки!
                         if(i == Keywords.at(0)){//Використання ключових слів!
@@ -185,21 +198,15 @@ void MainWindow::on_Button_send_clicked()//Button
 
 
 
+void MainWindow::on_Button_inf_clicked()
+{
+        QMessageBox::information(this,tr("Увага!!!"),tr("Під час створення відповіді на запитання ") +
+                                                 tr("використовуйте сигнатуру типу: \n")+
+                                                 tr("Для сайтів\n")
+                                                + Keywords.at(0) + tr("siteAddress.com\n")+
+                                                 tr("Для програм\n")
+                                                + Keywords.at(1) + tr("programName\n")+
+                                                 tr("Для відкривання файлів\n")
+                                                + Keywords.at(1) + tr("D:\\Git\\starе-qt\\Aida.exe"));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

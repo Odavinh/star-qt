@@ -122,3 +122,5 @@ int memory::open_program(const QString &str){
 
 
 
+
+

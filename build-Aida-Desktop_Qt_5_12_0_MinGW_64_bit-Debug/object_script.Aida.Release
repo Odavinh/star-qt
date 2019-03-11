@@ -1,0 +1,10 @@
+release/main.o
+release/mainwindow.o
+release/memory.o
+release/learn.o
+release/login.o
+release/showmemory.o
+release/qrc_img.o
+release/moc_mainwindow.o
+release/moc_login.o
+release/moc_showmemory.o
