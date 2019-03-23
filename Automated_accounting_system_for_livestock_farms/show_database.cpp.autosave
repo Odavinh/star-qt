@@ -211,7 +211,7 @@ void Show_Database::on_buttoSearch_clicked()
 
         qModel->setQuery("USE " + *this->databaseName + " SELECT * FROM " + *this->tableName + " WHERE Gender = 'Ч'");
 //        qModel->setHeaderData(0 ,Qt::Horizontal,"ID");
-        qDebug() << sqlmodel->filter();
+        
         if(request != ""){
             //ui->tableEmploee->setModel(sqlmodel);
             //ui->tableEmploee->update();
