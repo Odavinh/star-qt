@@ -3,35 +3,44 @@
 #include<QSqlError>
 #include<QSqlRecord>
 
-Show_Database::Show_Database(QWidget *parent) :
+Show_Database::Show_Database(QWidget *parent, const QString &databaseName,
+                             const QString &tableName,
+                             const QString &tableNameStatistics) :
     QDialog(parent),
     ui(new Ui::Show_Database)
 {
     ui->setupUi(this);
+
+    settings = new Settings;
+    restoreGeometry(settings->getSettingsGeometyShowBD());
+
+    *this->databaseName = databaseName;
+    *this->tableNameStatistics = tableNameStatistics;
+    *this->tableName = tableName;
+
     tableEmploeeModified = false;
     tableStatisticsModified = false;
+    RowAdd = false;
+
+    SetingsChangeWindow = true;
+
     this->resize(980,640);
     QStringList lstGender;
     lstGender << "Ч - Ж" << "Ч" <<"Ж";
     ui->BoxGender->addItems(lstGender);
-//    QSqlQuery query = QSqlQuery(db);
-//    if(!query.exec("USE Database_of_farms "
-//                   "SELECT * FROM Employee")){
-//        qDebug()<<query.lastError().text();
-//    }else{
-//        while(query.next()){
-//            qDebug() << query.record();
-//        }
-//    }
+
+    chnTblEmpl = new ChangeTableEmploee();
+    chnTblEmpl->setParent(this,Qt::Window);
+
+    chnTblStc = new ChangeTableStatisticss();
+    chnTblStc->setParent(this,Qt::Window);
 
 }
 int Show_Database::conect_dataBase(const QString &driver,
-                                   const QString &databaseName,
                                    const QString &hostName,
                                    const QString &userName,
                                    const QString &pasword){
 
-    *this->databaseName = databaseName;
     QSqlDatabase dbEmp = QSqlDatabase::addDatabase(driver);
     dbEmp.setDatabaseName("DRIVER={SQL Server};"
                        "Server="+hostName+";"
@@ -49,38 +58,50 @@ int Show_Database::conect_dataBase(const QString &driver,
         QMessageBox::critical(this,"Error DataBase",dbEmp.lastError().text());
         return 1;
     }
-    else
+    else{
         qDebug()<<"open db";
+        modelStatistis = new QSqlTableModel(this,dbEmp);
+        sqlmodel = new QSqlTableModel(this,dbEmp);
+    }
     return 0;
 }
 
-int Show_Database::FullModelDataBase(const QString & tableName){
-    *this->tableName = tableName;
-    sqlmodel = new QSqlTableModel(this,*dbEmp);
+int Show_Database::FullModelDataBase(){
     sqlmodel->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    sqlmodel->setTable(tableName);
+    sqlmodel->setTable(*tableName);
     if(sqlmodel->select()){
-        ui->tableEmploee->setModel(sqlmodel);
+         ui->tableEmploee->setModel(sqlmodel);
+         chnTblEmpl->setModel(sqlmodel, RowAdd);
     }else{
         QMessageBox::critical(this, "Error",sqlmodel->lastError().text());
         return 1;
     }
+    ui->toolBox->setCurrentIndex(0);
     return 0;
 }
-int Show_Database::FullModelDataBaseStatistics(const QString &tableName){
-    *this->tableNameStatistics = tableName;
-    modelStatistis = new QSqlTableModel(this,*dbEmp);
+int Show_Database::FullModelDataBaseStatistics(){
     modelStatistis->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    modelStatistis->setTable(tableName);
-    if(modelStatistis->select())
+    modelStatistis->setTable(*tableNameStatistics);
+    if(modelStatistis->select()){
+        chnTblStc->setModel(modelStatistis);
         ui->tableStatistics->setModel(modelStatistis);
-    else {
+    }else {
        QMessageBox::critical(this,"Error",modelStatistis->lastError().text());
        return 1;
     }
-    ui->tableEmploee->update();
     return 0;
 }
+
+bool Show_Database::GetSetingsChangeWindow()
+{
+    return this->SetingsChangeWindow;
+}
+
+void Show_Database::SetSetingsChangeWindow(const bool &SetingsChangeWindow)
+{
+    this->SetingsChangeWindow = SetingsChangeWindow;
+}
+
 
 void Show_Database::closeEvent(QCloseEvent *event){
     if(tableEmploeeModified || tableStatisticsModified){
@@ -105,7 +126,9 @@ void Show_Database::closeEvent(QCloseEvent *event){
 
 Show_Database::~Show_Database()
 {
+    settings->setSettingsGeometyShowBD(saveGeometry());
     dbEmp->close();
+    delete settings;
     delete tableNameStatistics;
     delete tableName;
     delete databaseName;
@@ -139,14 +162,22 @@ void Show_Database::on_pushButtonCancelSt_clicked()
 
 void Show_Database::on_tableEmploee_doubleClicked(const QModelIndex &index)
 {
-    if(index.isValid()){
+    if(index.isValid())
         tableEmploeeModified = true;
+
+    if(SetingsChangeWindow){
+        chnTblEmpl->mapper->setCurrentModelIndex(index);
+        chnTblEmpl->show();
     }
 }
 void Show_Database::on_tableStatistics_doubleClicked(const QModelIndex &index)
 {
     if(index.isValid())
         tableStatisticsModified = true;
+    if(SetingsChangeWindow){
+        chnTblStc->mapper->setCurrentModelIndex(index);
+        chnTblStc->show();
+    }
 }
 
 void Show_Database::on_clear_table_clicked()
@@ -156,7 +187,8 @@ void Show_Database::on_clear_table_clicked()
 
 void Show_Database::on_add_row_clicked()
 {
-    qDebug() << "insert row"<<sqlmodel->insertRow(sqlmodel->rowCount());
+    sqlmodel->insertRow(sqlmodel->rowCount());
+    RowAdd = true;
 }
 void Show_Database::on_pushAddSt_clicked()
 {
@@ -211,7 +243,7 @@ void Show_Database::on_buttoSearch_clicked()
 
         qModel->setQuery("USE " + *this->databaseName + " SELECT * FROM " + *this->tableName + " WHERE Gender = 'Ч'");
 //        qModel->setHeaderData(0 ,Qt::Horizontal,"ID");
-        qDebug() << sqlmodel->filter();
+        
         if(request != ""){
             //ui->tableEmploee->setModel(sqlmodel);
             //ui->tableEmploee->update();
@@ -219,11 +251,3 @@ void Show_Database::on_buttoSearch_clicked()
 }
 
 
-void Show_Database::on_toolBox_currentChanged(int index)
-{
-    if(index == 0)
-        this->resize(980,640);
-    else if(index == 1)
-        this->resize(640,640);
-
-}

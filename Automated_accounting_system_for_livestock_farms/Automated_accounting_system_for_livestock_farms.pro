@@ -27,15 +27,24 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    show_database.cpp
+    show_database.cpp \
+    changetableemploee.cpp \
+    changetablestatisticss.cpp \
+    settings.cpp
 
 HEADERS += \
         mainwindow.h \
-    show_database.h
+    show_database.h \
+    changetableemploee.h \
+    changetablestatisticss.h \
+    settings.h
 
 FORMS += \
         mainwindow.ui \
-    show_database.ui
+    show_database.ui \
+    changetableemploee.ui \
+    changetablestatisticss.ui \
+    settings.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

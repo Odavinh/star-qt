@@ -233,6 +233,7 @@ public:
         tableEmploee = new QTableView(Emploee);
         tableEmploee->setObjectName(QString::fromUtf8("tableEmploee"));
         tableEmploee->setSortingEnabled(true);
+        tableEmploee->horizontalHeader()->setStretchLastSection(true);
 
         gridLayout_2->addWidget(tableEmploee, 1, 0, 1, 2);
 
@@ -369,6 +370,8 @@ public:
         tableStatistics = new QTableView(Statistics);
         tableStatistics->setObjectName(QString::fromUtf8("tableStatistics"));
         tableStatistics->setMinimumSize(QSize(300, 0));
+        tableStatistics->horizontalHeader()->setProperty("showSortIndicator", QVariant(true));
+        tableStatistics->horizontalHeader()->setStretchLastSection(true);
 
         gridLayout_4->addWidget(tableStatistics, 0, 0, 4, 2);
 
@@ -436,7 +439,7 @@ public:
 
         retranslateUi(Show_Database);
 
-        toolBox->setCurrentIndex(0);
+        toolBox->setCurrentIndex(1);
         Button_save->setDefault(true);
 
 

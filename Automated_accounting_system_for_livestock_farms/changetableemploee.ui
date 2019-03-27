@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ChangeTableEmploee</class>
+ <widget class="QDialog" name="ChangeTableEmploee">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>424</width>
+    <height>473</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QSpinBox" name="BoxID"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="labelID">
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="8" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_10">
+     <item>
+      <widget class="QPushButton" name="ButtonApply">
+       <property name="minimumSize">
+        <size>
+         <width>70</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background:#00AC14;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+
+}
+QPushButton:hover{
+background:#2DBE3B;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}
+QPushButton:pressed{
+background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}</string>
+       </property>
+       <property name="text">
+        <string>Підтвердити</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="ButtonClose">
+       <property name="minimumSize">
+        <size>
+         <width>70</width>
+         <height>20</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background:#00AC14;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+
+}
+QPushButton:hover{
+background:#2DBE3B;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}
+QPushButton:pressed{
+background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}</string>
+       </property>
+       <property name="text">
+        <string>Закрити</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLineEdit" name="lineName"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelName">
+         <property name="text">
+          <string>Ім'я</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QLineEdit" name="lineSurname"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="labelSurname">
+         <property name="text">
+          <string>Прізвище</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="QSpinBox" name="BoxSalaru"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="LableSalary">
+       <property name="text">
+        <string>Зарплата</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLineEdit" name="linePosition"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Посада</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_7">
+     <item>
+      <widget class="QLineEdit" name="lineSba"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="SbraLabel">
+       <property name="text">
+        <string>Направленість</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="labelGender">
+         <property name="text">
+          <string>Стать</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="BoxGender">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <item>
+          <property name="text">
+           <string>Ч</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Ж</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="DataLabel">
+         <property name="text">
+          <string>Дата народження</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateEdit" name="dateEdit"/>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_9">
+     <item>
+      <widget class="QLineEdit" name="LineNumber"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="NumberLable">
+       <property name="text">
+        <string>Номер телефону</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="QLineEdit" name="lineEmail"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="EmailLable">
+       <property name="text">
+        <string>Email</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

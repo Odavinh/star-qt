@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>419</width>
+    <width>439</width>
     <height>398</height>
    </rect>
   </property>
@@ -18,8 +18,47 @@
     <property name="spacing">
      <number>6</number>
     </property>
-    <item row="4" column="1">
-     <widget class="QPushButton" name="pushButton_2">
+    <item row="0" column="5">
+     <widget class="QPushButton" name="infoButton">
+      <property name="minimumSize">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>40</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+color:#00AC14;
+border:0px solid #FFFFFF;
+
+}
+QPushButton:hover{
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}
+QPushButton:pressed{
+color::#00AC14;
+border:0px solid #FFFFFF;
+}</string>
+      </property>
+      <property name="text">
+       <string>?</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QPushButton" name="ButtonWindowSetings">
       <property name="minimumSize">
        <size>
         <width>200</width>
@@ -50,47 +89,11 @@ border:0px solid #FFFFFF;
 }</string>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Налаштування</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="minimumSize">
-       <size>
-        <width>200</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton{
-background:#00AC14;
-color:#FFE53E;
-border:0px solid #FFFFFF;
-
-}
-QPushButton:hover{
-background:#2DBE3B;
-color:#FFE53E;
-border:0px solid #FFFFFF;
-}
-QPushButton:pressed{
-background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
-color:#FFE53E;
-border:0px solid #FFFFFF;
-}</string>
-      </property>
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
+    <item row="2" column="2">
      <widget class="QPushButton" name="Button_db">
       <property name="minimumSize">
        <size>
@@ -122,12 +125,19 @@ border:0px solid #FFFFFF;
 }</string>
       </property>
       <property name="text">
-       <string>Дані Працівників</string>
+       <string>Діні працівників і Статистика</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
-     <spacer name="horizontalSpacer">
+    <item row="6" column="2">
+     <widget class="QProgressBar" name="progressBar">
+      <property name="value">
+       <number>24</number>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <spacer name="horizontalSpacer_3">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -139,51 +149,20 @@ border:0px solid #FFFFFF;
       </property>
      </spacer>
     </item>
-    <item row="1" column="2">
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="minimumSize">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton{
-background:#00AC14;
-color:#FFE53E;
-border:0px solid #FFFFFF;
-
-}
-QPushButton:hover{
-background:#2DBE3B;
-color:#FFE53E;
-border:0px solid #FFFFFF;
-}
-QPushButton:pressed{
-background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
-color:#FFE53E;
-border:0px solid #FFFFFF;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <spacer name="horizontalSpacer_2">
+    <item row="3" column="3">
+     <spacer name="verticalSpacer_3">
       <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+       <enum>Qt::Vertical</enum>
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>40</width>
-        <height>20</height>
+        <width>20</width>
+        <height>40</height>
        </size>
       </property>
      </spacer>
     </item>
-    <item row="3" column="1">
+    <item row="3" column="2">
      <widget class="QPushButton" name="pushButton">
       <property name="minimumSize">
        <size>
@@ -219,12 +198,119 @@ border:0px solid #FFFFFF;
       </property>
      </widget>
     </item>
-    <item row="6" column="1">
-     <widget class="QProgressBar" name="progressBar">
-      <property name="value">
-       <number>24</number>
+    <item row="2" column="5">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="5" column="2">
+     <widget class="QPushButton" name="ButtonExit">
+      <property name="minimumSize">
+       <size>
+        <width>200</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+background:#00AC14;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+
+}
+QPushButton:hover{
+background:#2DBE3B;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}
+QPushButton:pressed{
+background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}</string>
+      </property>
+      <property name="text">
+       <string>Вийти</string>
       </property>
      </widget>
+    </item>
+    <item row="4" column="3">
+     <spacer name="verticalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="3">
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="5" column="3">
+     <spacer name="verticalSpacer_5">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="1">
+     <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="0">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
    </layout>
   </widget>
@@ -233,7 +319,7 @@ border:0px solid #FFFFFF;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>419</width>
+     <width>439</width>
      <height>20</height>
     </rect>
    </property>

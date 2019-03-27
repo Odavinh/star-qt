@@ -1,0 +1,11 @@
+debug/main.o
+debug/mainwindow.o
+debug/show_database.o
+debug/changetableemploee.o
+debug/changetablestatisticss.o
+debug/settings.o
+debug/moc_mainwindow.o
+debug/moc_show_database.o
+debug/moc_changetableemploee.o
+debug/moc_changetablestatisticss.o
+debug/moc_settings.o

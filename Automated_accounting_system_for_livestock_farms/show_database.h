@@ -10,6 +10,9 @@
 #include<QCloseEvent>
 #include<QTableView>
 #include<QSqlQueryModel>
+#include"changetableemploee.h"
+#include"changetablestatisticss.h"
+#include"settings.h"
 
 
 namespace Ui {
@@ -21,15 +24,20 @@ class Show_Database : public QDialog
     Q_OBJECT
 
 public:
-    explicit Show_Database(QWidget *parent = nullptr);
+    explicit Show_Database(QWidget *parent = nullptr,
+                           const QString &databaseName = "Database_of_farms",
+                           const QString &tableName = nullptr,
+                           const QString &tableNameStatistics = "Statisticss");
     ~Show_Database();
     int conect_dataBase(const QString & driver,
-                        const QString & databaseName,
                         const QString & hostName,
                         const QString & userName,
                         const QString & pasword);
-    int FullModelDataBase(const QString & tableName);
-    int FullModelDataBaseStatistics(const QString &tableName);
+    int FullModelDataBase();
+    int FullModelDataBaseStatistics();
+
+    bool GetSetingsChangeWindow();
+    void SetSetingsChangeWindow(const bool &SetingsChangeWindow);
 
 private slots:
     void on_Button_save_clicked();
@@ -56,18 +64,24 @@ private slots:
 
     void on_tableStatistics_doubleClicked(const QModelIndex &index);
 
-    void on_toolBox_currentChanged(int index);
+
 
 private:
     Ui::Show_Database *ui;
     QSqlDatabase *dbEmp = new QSqlDatabase;
     QSqlTableModel *sqlmodel;
     QSqlTableModel *modelStatistis;
+    ChangeTableEmploee *chnTblEmpl;
+    ChangeTableStatisticss *chnTblStc;
+    Settings *settings;
     QString *tableNameStatistics = new QString;
     QString *tableName = new QString;
     QString *databaseName = new QString;
     bool tableEmploeeModified;
     bool tableStatisticsModified;
+    bool RowAdd;
+
+    bool SetingsChangeWindow;
 
     void closeEvent(QCloseEvent *event);
 };

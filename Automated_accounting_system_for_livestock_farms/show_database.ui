@@ -47,7 +47,7 @@ border:0px solid #FFFFFF;
 }</string>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="Emploee">
       <property name="geometry">
@@ -287,6 +287,9 @@ border:0px solid #FFFFFF;
          <property name="sortingEnabled">
           <bool>true</bool>
          </property>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
         </widget>
        </item>
        <item row="0" column="0" colspan="2">
@@ -511,6 +514,12 @@ border:0px solid #FFFFFF;
            <height>0</height>
           </size>
          </property>
+         <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
         </widget>
        </item>
        <item row="3" column="2">
