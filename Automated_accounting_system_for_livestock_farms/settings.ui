@@ -29,13 +29,38 @@
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
         <widget class="QLabel" name="label_6">
+         <property name="styleSheet">
+          <string notr="true">color:#00AC14;</string>
+         </property>
          <property name="text">
           <string>Логін    </string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineUserName"/>
+        <widget class="QLineEdit" name="lineUserName">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -43,6 +68,9 @@
       <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
         <widget class="QLabel" name="label_7">
+         <property name="styleSheet">
+          <string notr="true">color:#00AC14;</string>
+         </property>
          <property name="text">
           <string>Пароль</string>
          </property>
@@ -50,6 +78,28 @@
        </item>
        <item>
         <widget class="QLineEdit" name="linePasvord">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}
+</string>
+         </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
          </property>
@@ -103,19 +153,6 @@ border:0px solid #FFFFFF;
      </property>
     </spacer>
    </item>
-   <item row="0" column="2">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="3" column="0" colspan="4">
     <widget class="QLabel" name="label_8">
      <property name="minimumSize">
@@ -135,6 +172,9 @@ border:0px solid #FFFFFF;
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string notr="true">color:#00AC14;</string>
+         </property>
          <property name="text">
           <string>База даних                      </string>
          </property>
@@ -145,14 +185,23 @@ border:0px solid #FFFFFF;
          <property name="minimumSize">
           <size>
            <width>200</width>
-           <height>0</height>
+           <height>22</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>470</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
          </property>
         </widget>
        </item>
@@ -162,6 +211,9 @@ border:0px solid #FFFFFF;
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true">color:#00AC14;</string>
+         </property>
          <property name="text">
           <string>Таблиця працівників      </string>
          </property>
@@ -172,14 +224,23 @@ border:0px solid #FFFFFF;
          <property name="minimumSize">
           <size>
            <width>200</width>
-           <height>0</height>
+           <height>22</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>470</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
          </property>
         </widget>
        </item>
@@ -189,8 +250,11 @@ border:0px solid #FFFFFF;
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
         <widget class="QLabel" name="label_3">
+         <property name="styleSheet">
+          <string notr="true">color:#00AC14;</string>
+         </property>
          <property name="text">
-          <string>Таблиця з статистикою</string>
+          <string>Таблиця з статистикою </string>
          </property>
         </widget>
        </item>
@@ -199,14 +263,23 @@ border:0px solid #FFFFFF;
          <property name="minimumSize">
           <size>
            <width>200</width>
-           <height>0</height>
+           <height>22</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>470</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
          </property>
         </widget>
        </item>
@@ -216,8 +289,11 @@ border:0px solid #FFFFFF;
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
         <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true">color:#00AC14;</string>
+         </property>
          <property name="text">
-          <string>Драйвер Бази даних     </string>
+          <string>Драйвер Бази даних      </string>
          </property>
         </widget>
        </item>
@@ -226,14 +302,23 @@ border:0px solid #FFFFFF;
          <property name="minimumSize">
           <size>
            <width>200</width>
-           <height>0</height>
+           <height>22</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>470</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
          </property>
         </widget>
        </item>
@@ -243,6 +328,9 @@ border:0px solid #FFFFFF;
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
         <widget class="QLabel" name="label_5">
+         <property name="styleSheet">
+          <string notr="true">color:#00AC14;</string>
+         </property>
          <property name="text">
           <string>Ім'я Сервера                   </string>
          </property>
@@ -253,14 +341,23 @@ border:0px solid #FFFFFF;
          <property name="minimumSize">
           <size>
            <width>200</width>
-           <height>0</height>
+           <height>22</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>16777215</width>
+           <width>470</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
          </property>
         </widget>
        </item>
@@ -270,6 +367,9 @@ border:0px solid #FFFFFF;
    </item>
    <item row="2" column="0" colspan="3">
     <widget class="QCheckBox" name="checkBox">
+     <property name="styleSheet">
+      <string notr="true">color:#00AC14;</string>
+     </property>
      <property name="text">
       <string>Стандартні вікна редагування таблиць</string>
      </property>
@@ -347,13 +447,6 @@ border:0px solid #FFFFFF;
      </item>
     </layout>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label_10">
-     <property name="text">
-      <string>Обов'язкові налаштування</string>
-     </property>
-    </widget>
-   </item>
    <item row="2" column="3">
     <spacer name="verticalSpacer_2">
      <property name="orientation">
@@ -379,6 +472,26 @@ border:0px solid #FFFFFF;
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="0" column="3">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" colspan="3">
+    <widget class="QLabel" name="label_10">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00ac14;&quot;&gt;Обов'язкові налаштування&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#ff0000;&quot;&gt;Зміни налаштувань бази даних будуть активні після перезагрузки програми!!!! &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

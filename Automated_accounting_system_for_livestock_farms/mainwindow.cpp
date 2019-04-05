@@ -2,40 +2,33 @@
 #include "ui_mainwindow.h"
 #include<QStatusBar>
 #include<QMessageBox>
+#include<QSqlTableModel>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-     settings = new Settings;
-     restoreGeometry(settings->getSettingsGeometryMain());
+    settings = new Settings;
 
-    databaseName = new QString("Database_of_farms");
-    tableEmploeeName = new QString("Employee");
-    tableStatisticsName = new QString("Statisticss");
+    restoreGeometry(settings->getSettingsGeometryMain());
 
-    driverDB = new QString("QODBC");
-    hostName = new QString("ODAVINH\\SQLEXPRESS");
-    pasword = new QString("");
-    userName = new QString("");
-    SetingsChangeWindow = dataBase->GetSetingsChangeWindow();
+    dataBase->setShortcutEnabled(settings->getSetingsChangeWindow());
 
-    dataBase = new Show_Database(nullptr, *databaseName, *tableEmploeeName, *tableStatisticsName);
+    dataBase = new Show_Database(nullptr, *settings->getDatabaseName(),
+                                 *settings->getTableEmploeeName(),
+                                 *settings->getTableStatisticsName());
     ui->progressBar->hide();
-    isConectDB =  dataBase->conect_dataBase(*driverDB , *hostName, *pasword, *userName);
+    isConectDB =  dataBase->conect_dataBase(*settings->getDriverDB(),
+                                            *settings->getHostName(),
+                                            *settings->getPasword(),
+                                            *settings->getUserName());
 }
 
 MainWindow::~MainWindow()
 {
     settings->setSettingsGeometryMain(saveGeometry());
+    settings->saveSettings();
     delete settings;
-    delete driverDB;
-    delete hostName;
-    delete pasword;
-    delete userName;
-    delete tableEmploeeName;
-    delete tableStatisticsName;
-    delete databaseName;
     delete dataBase;
     delete ui;
 }
@@ -61,6 +54,8 @@ void MainWindow::on_Button_db_clicked()
 void MainWindow::on_ButtonExit_clicked()
 {
     settings->close();
+    dataBase->setTableEmploeeModified(false);
+    dataBase->setTableStatisticsModified(false);
     dataBase->close();
     close();
 }

@@ -21,6 +21,9 @@
      </item>
      <item>
       <widget class="QLabel" name="labelID">
+       <property name="styleSheet">
+        <string notr="true">color:#00AC14</string>
+       </property>
        <property name="text">
         <string>ID</string>
        </property>
@@ -99,10 +102,29 @@ border:0px solid #FFFFFF;
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QLineEdit" name="lineName"/>
+        <widget class="QLineEdit" name="lineName">
+         <property name="minimumSize">
+          <size>
+           <width>22</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="labelName">
+         <property name="styleSheet">
+          <string notr="true">color:#00AC14</string>
+         </property>
          <property name="text">
           <string>Ім'я</string>
          </property>
@@ -113,10 +135,29 @@ border:0px solid #FFFFFF;
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QLineEdit" name="lineSurname"/>
+        <widget class="QLineEdit" name="lineSurname">
+         <property name="minimumSize">
+          <size>
+           <width>22</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="labelSurname">
+         <property name="styleSheet">
+          <string notr="true">color:#00AC14</string>
+         </property>
          <property name="text">
           <string>Прізвище</string>
          </property>
@@ -133,6 +174,9 @@ border:0px solid #FFFFFF;
      </item>
      <item>
       <widget class="QLabel" name="LableSalary">
+       <property name="styleSheet">
+        <string notr="true">color:#00AC14</string>
+       </property>
        <property name="text">
         <string>Зарплата</string>
        </property>
@@ -143,10 +187,29 @@ border:0px solid #FFFFFF;
    <item row="3" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="QLineEdit" name="linePosition"/>
+      <widget class="QLineEdit" name="linePosition">
+       <property name="minimumSize">
+        <size>
+         <width>22</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="label">
+       <property name="styleSheet">
+        <string notr="true">color:#00AC14</string>
+       </property>
        <property name="text">
         <string>Посада</string>
        </property>
@@ -157,10 +220,29 @@ border:0px solid #FFFFFF;
    <item row="4" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_7">
      <item>
-      <widget class="QLineEdit" name="lineSba"/>
+      <widget class="QLineEdit" name="lineSba">
+       <property name="minimumSize">
+        <size>
+         <width>22</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="SbraLabel">
+       <property name="styleSheet">
+        <string notr="true">color:#00AC14</string>
+       </property>
        <property name="text">
         <string>Направленість</string>
        </property>
@@ -174,6 +256,9 @@ border:0px solid #FFFFFF;
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
         <widget class="QLabel" name="labelGender">
+         <property name="styleSheet">
+          <string notr="true">color:#00AC14;</string>
+         </property>
          <property name="text">
           <string>Стать</string>
          </property>
@@ -202,13 +287,33 @@ border:0px solid #FFFFFF;
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QLabel" name="DataLabel">
+         <property name="styleSheet">
+          <string notr="true">color:#00AC14;</string>
+         </property>
          <property name="text">
           <string>Дата народження</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QDateEdit" name="dateEdit"/>
+        <widget class="QDateEdit" name="dateEdit">
+         <property name="dateTime">
+          <datetime>
+           <hour>0</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2000</year>
+           <month>1</month>
+           <day>1</day>
+          </datetime>
+         </property>
+         <property name="displayFormat">
+          <string>dd-MM-yyyy</string>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -217,10 +322,29 @@ border:0px solid #FFFFFF;
    <item row="6" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_9">
      <item>
-      <widget class="QLineEdit" name="LineNumber"/>
+      <widget class="QLineEdit" name="LineNumber">
+       <property name="minimumSize">
+        <size>
+         <width>22</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="NumberLable">
+       <property name="styleSheet">
+        <string notr="true">color:#00AC14</string>
+       </property>
        <property name="text">
         <string>Номер телефону</string>
        </property>
@@ -231,10 +355,29 @@ border:0px solid #FFFFFF;
    <item row="7" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
-      <widget class="QLineEdit" name="lineEmail"/>
+      <widget class="QLineEdit" name="lineEmail">
+       <property name="minimumSize">
+        <size>
+         <width>22</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="EmailLable">
+       <property name="styleSheet">
+        <string notr="true">color:#00AC14</string>
+       </property>
        <property name="text">
         <string>Email</string>
        </property>

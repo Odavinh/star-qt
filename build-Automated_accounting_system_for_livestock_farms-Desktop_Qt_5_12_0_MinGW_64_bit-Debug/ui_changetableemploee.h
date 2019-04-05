@@ -80,6 +80,7 @@ public:
 
         labelID = new QLabel(ChangeTableEmploee);
         labelID->setObjectName(QString::fromUtf8("labelID"));
+        labelID->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout->addWidget(labelID);
 
@@ -141,11 +142,20 @@ public:
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         lineName = new QLineEdit(ChangeTableEmploee);
         lineName->setObjectName(QString::fromUtf8("lineName"));
+        lineName->setMinimumSize(QSize(22, 0));
+        lineName->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+"border:1px solid #00AC14;\n"
+"\n"
+"}\n"
+"QLineEdit:hover{\n"
+"border:2px solid #00AC14;\n"
+"}"));
 
         horizontalLayout_2->addWidget(lineName);
 
         labelName = new QLabel(ChangeTableEmploee);
         labelName->setObjectName(QString::fromUtf8("labelName"));
+        labelName->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout_2->addWidget(labelName);
 
@@ -156,11 +166,20 @@ public:
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         lineSurname = new QLineEdit(ChangeTableEmploee);
         lineSurname->setObjectName(QString::fromUtf8("lineSurname"));
+        lineSurname->setMinimumSize(QSize(22, 0));
+        lineSurname->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+"border:1px solid #00AC14;\n"
+"\n"
+"}\n"
+"QLineEdit:hover{\n"
+"border:2px solid #00AC14;\n"
+"}"));
 
         horizontalLayout_3->addWidget(lineSurname);
 
         labelSurname = new QLabel(ChangeTableEmploee);
         labelSurname->setObjectName(QString::fromUtf8("labelSurname"));
+        labelSurname->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout_3->addWidget(labelSurname);
 
@@ -179,6 +198,7 @@ public:
 
         LableSalary = new QLabel(ChangeTableEmploee);
         LableSalary->setObjectName(QString::fromUtf8("LableSalary"));
+        LableSalary->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout_6->addWidget(LableSalary);
 
@@ -189,11 +209,20 @@ public:
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         linePosition = new QLineEdit(ChangeTableEmploee);
         linePosition->setObjectName(QString::fromUtf8("linePosition"));
+        linePosition->setMinimumSize(QSize(22, 0));
+        linePosition->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+"border:1px solid #00AC14;\n"
+"\n"
+"}\n"
+"QLineEdit:hover{\n"
+"border:2px solid #00AC14;\n"
+"}"));
 
         horizontalLayout_4->addWidget(linePosition);
 
         label = new QLabel(ChangeTableEmploee);
         label->setObjectName(QString::fromUtf8("label"));
+        label->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout_4->addWidget(label);
 
@@ -204,11 +233,20 @@ public:
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
         lineSba = new QLineEdit(ChangeTableEmploee);
         lineSba->setObjectName(QString::fromUtf8("lineSba"));
+        lineSba->setMinimumSize(QSize(22, 0));
+        lineSba->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+"border:1px solid #00AC14;\n"
+"\n"
+"}\n"
+"QLineEdit:hover{\n"
+"border:2px solid #00AC14;\n"
+"}"));
 
         horizontalLayout_7->addWidget(lineSba);
 
         SbraLabel = new QLabel(ChangeTableEmploee);
         SbraLabel->setObjectName(QString::fromUtf8("SbraLabel"));
+        SbraLabel->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout_7->addWidget(SbraLabel);
 
@@ -221,6 +259,7 @@ public:
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         labelGender = new QLabel(ChangeTableEmploee);
         labelGender->setObjectName(QString::fromUtf8("labelGender"));
+        labelGender->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
         verticalLayout_2->addWidget(labelGender);
 
@@ -239,11 +278,14 @@ public:
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         DataLabel = new QLabel(ChangeTableEmploee);
         DataLabel->setObjectName(QString::fromUtf8("DataLabel"));
+        DataLabel->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
         verticalLayout_3->addWidget(DataLabel);
 
         dateEdit = new QDateEdit(ChangeTableEmploee);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
+        dateEdit->setDateTime(QDateTime(QDate(2000, 1, 1), QTime(0, 0, 0)));
+        dateEdit->setCalendarPopup(true);
 
         verticalLayout_3->addWidget(dateEdit);
 
@@ -257,11 +299,20 @@ public:
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
         LineNumber = new QLineEdit(ChangeTableEmploee);
         LineNumber->setObjectName(QString::fromUtf8("LineNumber"));
+        LineNumber->setMinimumSize(QSize(22, 0));
+        LineNumber->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+"border:1px solid #00AC14;\n"
+"\n"
+"}\n"
+"QLineEdit:hover{\n"
+"border:2px solid #00AC14;\n"
+"}"));
 
         horizontalLayout_9->addWidget(LineNumber);
 
         NumberLable = new QLabel(ChangeTableEmploee);
         NumberLable->setObjectName(QString::fromUtf8("NumberLable"));
+        NumberLable->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout_9->addWidget(NumberLable);
 
@@ -272,11 +323,20 @@ public:
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         lineEmail = new QLineEdit(ChangeTableEmploee);
         lineEmail->setObjectName(QString::fromUtf8("lineEmail"));
+        lineEmail->setMinimumSize(QSize(22, 0));
+        lineEmail->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+"border:1px solid #00AC14;\n"
+"\n"
+"}\n"
+"QLineEdit:hover{\n"
+"border:2px solid #00AC14;\n"
+"}"));
 
         horizontalLayout_8->addWidget(lineEmail);
 
         EmailLable = new QLabel(ChangeTableEmploee);
         EmailLable->setObjectName(QString::fromUtf8("EmailLable"));
+        EmailLable->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout_8->addWidget(EmailLable);
 
@@ -305,6 +365,7 @@ public:
         BoxGender->setItemText(1, QApplication::translate("ChangeTableEmploee", "\320\226", nullptr));
 
         DataLabel->setText(QApplication::translate("ChangeTableEmploee", "\320\224\320\260\321\202\320\260 \320\275\320\260\321\200\320\276\320\264\320\266\320\265\320\275\320\275\321\217", nullptr));
+        dateEdit->setDisplayFormat(QApplication::translate("ChangeTableEmploee", "dd-MM-yyyy", nullptr));
         NumberLable->setText(QApplication::translate("ChangeTableEmploee", "\320\235\320\276\320\274\320\265\321\200 \321\202\320\265\320\273\320\265\321\204\320\276\320\275\321\203", nullptr));
         EmailLable->setText(QApplication::translate("ChangeTableEmploee", "Email", nullptr));
     } // retranslateUi

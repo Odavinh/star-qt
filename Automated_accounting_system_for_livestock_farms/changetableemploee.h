@@ -16,6 +16,7 @@ public:
     explicit ChangeTableEmploee(QWidget *parent = nullptr);
     ~ChangeTableEmploee();
     void setModel(QAbstractItemModel *model,const bool &RowAdd);
+    void standartID(QAbstractItemModel &index);
 
      QDataWidgetMapper *mapper;
 
@@ -26,6 +27,7 @@ private slots:
 
 private:
     Ui::ChangeTableEmploee *ui;
+    bool RowAdd;
 };
 
 #endif // CHANGETABLEEMPLOEE_H

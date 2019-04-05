@@ -54,6 +54,7 @@ public:
     QLabel *label_position;
     QComboBox *BoxGender;
     QLabel *label_Gender;
+    QWidget *Enimals;
     QWidget *Statistics;
     QGridLayout *gridLayout_4;
     QVBoxLayout *verticalLayout;
@@ -69,7 +70,7 @@ public:
     {
         if (Show_Database->objectName().isEmpty())
             Show_Database->setObjectName(QString::fromUtf8("Show_Database"));
-        Show_Database->resize(592, 489);
+        Show_Database->resize(620, 520);
         gridLayout = new QGridLayout(Show_Database);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -91,14 +92,16 @@ public:
 "color:#FFE53E;\n"
 "border:0px solid #FFFFFF;\n"
 "}"));
+        toolBox->setLineWidth(1);
         Emploee = new QWidget();
         Emploee->setObjectName(QString::fromUtf8("Emploee"));
-        Emploee->setGeometry(QRect(0, 0, 592, 435));
+        Emploee->setGeometry(QRect(0, 0, 620, 439));
         gridLayout_2 = new QGridLayout(Emploee);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(6, -1, -1, -1);
         add_row = new QPushButton(Emploee);
         add_row->setObjectName(QString::fromUtf8("add_row"));
         add_row->setMinimumSize(QSize(80, 20));
@@ -242,11 +245,27 @@ public:
         gridLayout_3->setContentsMargins(6, 6, 6, -1);
         lineName = new QLineEdit(Emploee);
         lineName->setObjectName(QString::fromUtf8("lineName"));
+        lineName->setMinimumSize(QSize(0, 22));
+        lineName->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+"border:1px solid #00AC14;\n"
+"\n"
+"}\n"
+"QLineEdit:hover{\n"
+"border:2px solid #00AC14;\n"
+"}"));
 
         gridLayout_3->addWidget(lineName, 1, 0, 1, 1);
 
         linePosition = new QLineEdit(Emploee);
         linePosition->setObjectName(QString::fromUtf8("linePosition"));
+        linePosition->setMinimumSize(QSize(0, 22));
+        linePosition->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+"border:1px solid #00AC14;\n"
+"\n"
+"}\n"
+"QLineEdit:hover{\n"
+"border:2px solid #00AC14;\n"
+"}"));
 
         gridLayout_3->addWidget(linePosition, 1, 4, 1, 1);
 
@@ -274,21 +293,32 @@ public:
 
         label_name = new QLabel(Emploee);
         label_name->setObjectName(QString::fromUtf8("label_name"));
+        label_name->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
         gridLayout_3->addWidget(label_name, 0, 0, 1, 1);
 
         label_surname = new QLabel(Emploee);
         label_surname->setObjectName(QString::fromUtf8("label_surname"));
+        label_surname->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
         gridLayout_3->addWidget(label_surname, 0, 2, 1, 1);
 
         lineEditSurname = new QLineEdit(Emploee);
         lineEditSurname->setObjectName(QString::fromUtf8("lineEditSurname"));
+        lineEditSurname->setMinimumSize(QSize(0, 22));
+        lineEditSurname->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+"border:1px solid #00AC14;\n"
+"\n"
+"}\n"
+"QLineEdit:hover{\n"
+"border:2px solid #00AC14;\n"
+"}"));
 
         gridLayout_3->addWidget(lineEditSurname, 1, 2, 1, 1);
 
         label_position = new QLabel(Emploee);
         label_position->setObjectName(QString::fromUtf8("label_position"));
+        label_position->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
         gridLayout_3->addWidget(label_position, 0, 4, 1, 1);
 
@@ -300,6 +330,7 @@ public:
 
         label_Gender = new QLabel(Emploee);
         label_Gender->setObjectName(QString::fromUtf8("label_Gender"));
+        label_Gender->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
         gridLayout_3->addWidget(label_Gender, 0, 3, 1, 1);
 
@@ -307,9 +338,12 @@ public:
         gridLayout_2->addLayout(gridLayout_3, 0, 0, 1, 2);
 
         toolBox->addItem(Emploee, QString::fromUtf8("\320\221\320\260\320\267\320\260 \320\264\320\260\320\275\320\270\321\205 \320\277\321\200\320\260\321\206\321\226\320\262\320\275\320\270\320\272\321\226\320\262"));
+        Enimals = new QWidget();
+        Enimals->setObjectName(QString::fromUtf8("Enimals"));
+        toolBox->addItem(Enimals, QString::fromUtf8("\320\221\320\260\320\267\320\260 \320\264\320\260\320\275\320\270\321\205 \321\202\320\262\320\260\321\200\320\270\320\275 \320\275\320\260 \321\204\320\265\321\200\320\274\321\226"));
         Statistics = new QWidget();
         Statistics->setObjectName(QString::fromUtf8("Statistics"));
-        Statistics->setGeometry(QRect(0, 0, 592, 435));
+        Statistics->setGeometry(QRect(0, 0, 620, 439));
         gridLayout_4 = new QGridLayout(Statistics);
         gridLayout_4->setSpacing(0);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
@@ -439,7 +473,7 @@ public:
 
         retranslateUi(Show_Database);
 
-        toolBox->setCurrentIndex(1);
+        toolBox->setCurrentIndex(0);
         Button_save->setDefault(true);
 
 
@@ -460,6 +494,7 @@ public:
         label_position->setText(QApplication::translate("Show_Database", "\320\237\320\276\321\201\320\260\320\264\320\260", nullptr));
         label_Gender->setText(QApplication::translate("Show_Database", "\320\241\321\202\320\260\321\202\321\214", nullptr));
         toolBox->setItemText(toolBox->indexOf(Emploee), QApplication::translate("Show_Database", "\320\221\320\260\320\267\320\260 \320\264\320\260\320\275\320\270\321\205 \320\277\321\200\320\260\321\206\321\226\320\262\320\275\320\270\320\272\321\226\320\262", nullptr));
+        toolBox->setItemText(toolBox->indexOf(Enimals), QApplication::translate("Show_Database", "\320\221\320\260\320\267\320\260 \320\264\320\260\320\275\320\270\321\205 \321\202\320\262\320\260\321\200\320\270\320\275 \320\275\320\260 \321\204\320\265\321\200\320\274\321\226", nullptr));
         pushAddSt->setText(QApplication::translate("Show_Database", "\320\235\320\276\320\262\320\270\320\271 \321\200\321\217\320\264\320\276\320\272", nullptr));
         pushDeleteSt->setText(QApplication::translate("Show_Database", "\320\222\320\270\320\264\320\260\320\273\320\270\321\202\320\270 \321\200\321\217\320\264\320\276\320\272", nullptr));
         pushsaveSt->setText(QApplication::translate("Show_Database", "\320\227\320\261\320\265\321\200\320\265\320\263\321\202\320\270", nullptr));

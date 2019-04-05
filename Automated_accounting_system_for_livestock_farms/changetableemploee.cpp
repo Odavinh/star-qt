@@ -10,6 +10,7 @@ ChangeTableEmploee::ChangeTableEmploee(QWidget *parent) :
     mapper = new QDataWidgetMapper(this);
     mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
 
+    RowAdd = true;
     ui->BoxSalaru->setMaximum(10);
     ui->BoxSalaru->setMaximum(20000);
     ui->BoxID->setMaximum(10000);
@@ -22,8 +23,11 @@ ChangeTableEmploee::~ChangeTableEmploee()
 
 void ChangeTableEmploee::setModel(QAbstractItemModel *model, const bool &RowAdd)
 {
+    this->RowAdd = RowAdd;
     if(RowAdd)
         ui->BoxID->setMinimum(model->rowCount());
+
+
     mapper->setModel(model);
     mapper->addMapping(ui->BoxID, 0);
     mapper->addMapping(ui->lineName, 1);
@@ -35,6 +39,11 @@ void ChangeTableEmploee::setModel(QAbstractItemModel *model, const bool &RowAdd)
     mapper->addMapping(ui->lineSba, 7);
     mapper->addMapping(ui->LineNumber,8);
     mapper->addMapping(ui->lineEmail, 9);
+}
+
+void ChangeTableEmploee::standartID(QAbstractItemModel &model)
+{
+    ui->BoxID->setMinimum(model.rowCount());
 }
 
 void ChangeTableEmploee::on_ButtonClose_clicked()

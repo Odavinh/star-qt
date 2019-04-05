@@ -60,11 +60,14 @@ public:
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         dateEdit = new QDateEdit(ChangeTableStatisticss);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
+        dateEdit->setAutoFillBackground(false);
+        dateEdit->setCalendarPopup(true);
 
         horizontalLayout_4->addWidget(dateEdit);
 
         labelData = new QLabel(ChangeTableStatisticss);
         labelData->setObjectName(QString::fromUtf8("labelData"));
+        labelData->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout_4->addWidget(labelData);
 
@@ -80,6 +83,7 @@ public:
 
         labelCosts = new QLabel(ChangeTableStatisticss);
         labelCosts->setObjectName(QString::fromUtf8("labelCosts"));
+        labelCosts->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout_2->addWidget(labelCosts);
 
@@ -95,6 +99,7 @@ public:
 
         labelProfit = new QLabel(ChangeTableStatisticss);
         labelProfit->setObjectName(QString::fromUtf8("labelProfit"));
+        labelProfit->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout_3->addWidget(labelProfit);
 
@@ -157,6 +162,7 @@ public:
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         labelReport = new QLabel(ChangeTableStatisticss);
         labelReport->setObjectName(QString::fromUtf8("labelReport"));
+        labelReport->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
         gridLayout_2->addWidget(labelReport, 1, 1, 1, 1);
 
@@ -170,6 +176,14 @@ public:
 
         textEditReport = new QTextEdit(ChangeTableStatisticss);
         textEditReport->setObjectName(QString::fromUtf8("textEditReport"));
+        textEditReport->setStyleSheet(QString::fromUtf8("QTextEdit{\n"
+"border:1px solid #00AC14;\n"
+"\n"
+"}\n"
+"QTextEdit:hover{\n"
+"border:2px solid #00AC14;\n"
+"}\n"
+""));
 
         gridLayout_2->addWidget(textEditReport, 4, 0, 1, 3);
 
@@ -185,6 +199,7 @@ public:
     void retranslateUi(QDialog *ChangeTableStatisticss)
     {
         ChangeTableStatisticss->setWindowTitle(QApplication::translate("ChangeTableStatisticss", "Dialog", nullptr));
+        dateEdit->setDisplayFormat(QApplication::translate("ChangeTableStatisticss", "dd-MM-yyyy", nullptr));
         labelData->setText(QApplication::translate("ChangeTableStatisticss", "\320\237\320\273\320\276\321\207\320\260\321\202\320\276\320\272 \321\200\320\276\320\261\320\276\321\202\320\270", nullptr));
         labelCosts->setText(QApplication::translate("ChangeTableStatisticss", "\320\222\320\270\321\202\321\200\320\260\321\202\320\270", nullptr));
         labelProfit->setText(QApplication::translate("ChangeTableStatisticss", "\320\277\321\200\320\270\320\261\321\203\321\202\320\276\320\272", nullptr));

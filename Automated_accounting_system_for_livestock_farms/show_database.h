@@ -19,8 +19,7 @@ namespace Ui {
 class Show_Database;
 }
 
-class Show_Database : public QDialog
-{
+class Show_Database : public QDialog{
     Q_OBJECT
 
 public:
@@ -36,8 +35,9 @@ public:
     int FullModelDataBase();
     int FullModelDataBaseStatistics();
 
-    bool GetSetingsChangeWindow();
-    void SetSetingsChangeWindow(const bool &SetingsChangeWindow);
+    void setTableEmploeeModified(bool value);
+
+    void setTableStatisticsModified(bool value);
 
 private slots:
     void on_Button_save_clicked();
@@ -80,8 +80,6 @@ private:
     bool tableEmploeeModified;
     bool tableStatisticsModified;
     bool RowAdd;
-
-    bool SetingsChangeWindow;
 
     void closeEvent(QCloseEvent *event);
 };

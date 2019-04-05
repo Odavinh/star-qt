@@ -22,9 +22,6 @@ Show_Database::Show_Database(QWidget *parent, const QString &databaseName,
     tableStatisticsModified = false;
     RowAdd = false;
 
-    SetingsChangeWindow = true;
-
-    this->resize(980,640);
     QStringList lstGender;
     lstGender << "Ч - Ж" << "Ч" <<"Ж";
     ui->BoxGender->addItems(lstGender);
@@ -92,16 +89,6 @@ int Show_Database::FullModelDataBaseStatistics(){
     return 0;
 }
 
-bool Show_Database::GetSetingsChangeWindow()
-{
-    return this->SetingsChangeWindow;
-}
-
-void Show_Database::SetSetingsChangeWindow(const bool &SetingsChangeWindow)
-{
-    this->SetingsChangeWindow = SetingsChangeWindow;
-}
-
 
 void Show_Database::closeEvent(QCloseEvent *event){
     if(tableEmploeeModified || tableStatisticsModified){
@@ -165,7 +152,8 @@ void Show_Database::on_tableEmploee_doubleClicked(const QModelIndex &index)
     if(index.isValid())
         tableEmploeeModified = true;
 
-    if(SetingsChangeWindow){
+    if(settings->getSetingsChangeWindow()){
+        chnTblEmpl->standartID(*sqlmodel);
         chnTblEmpl->mapper->setCurrentModelIndex(index);
         chnTblEmpl->show();
     }
@@ -174,10 +162,20 @@ void Show_Database::on_tableStatistics_doubleClicked(const QModelIndex &index)
 {
     if(index.isValid())
         tableStatisticsModified = true;
-    if(SetingsChangeWindow){
+    if(settings->getSetingsChangeWindow()){
         chnTblStc->mapper->setCurrentModelIndex(index);
         chnTblStc->show();
     }
+}
+
+void Show_Database::setTableStatisticsModified(bool value)
+{
+    tableStatisticsModified = value;
+}
+
+void Show_Database::setTableEmploeeModified(bool value)
+{
+    tableEmploeeModified = value;
 }
 
 void Show_Database::on_clear_table_clicked()
@@ -209,45 +207,35 @@ void Show_Database::on_pushDeleteSt_clicked()
     int selectRow = ui->tableStatistics->currentIndex().row();
     if(selectRow >= 0){
         modelStatistis->removeRow(selectRow);
-        ui->tableStatistics->update();////////////////
+        ui->tableStatistics->update();
     }else
        QMessageBox::information(this,"",tr("Виберіть рядок!!!"));
 }
 
 void Show_Database::on_buttoSearch_clicked()
 {
-    QString request = " ";
-//    bool temp = false;
+    //    query.exec("USE " + *this->databaseName + " SELECT * FROM " + *this->tableName + " WHERE Gender = 'Ч'");
+    QString requestName = "[Name] = '" +ui->lineName->text() + "'";
+    QString requestSurname = ui->lineEditSurname->text();
+    QString requestGender = ui->BoxGender->currentText();
+    QString requestPosition = ui->linePosition->text();
 
-//    if(ui->lineName->text() != nullptr){
-//        request + "[Name] = '" + ui->lineName->text() + "'";
-//        temp = true;
-//    }
-//    if(temp)
-//        request + " END ";temp = false;
-//    if(ui->lineEditSurname->text() != nullptr){
-//        request + "[Surname] = '" + ui->lineEditSurname->text() + "'";
-//        temp = true;
-//    }
-//    if(temp)
-//        request + " END ";temp = false;
+    if(!requestSurname.isEmpty())
+        requestSurname = " AND [Surname] = '" + requestSurname + "'";
+    if(!requestGender.isEmpty())
+        requestGender = " AND [Gender] = '" + requestGender + "'";
+    if(!requestPosition.isEmpty())
+        requestPosition = " AND [Position] = '" + requestPosition + "'";
+    qDebug() << requestName;
+    qDebug() << requestSurname;
+    qDebug() << requestGender;
+    qDebug() << requestPosition;
 
-//    if(ui->linePosition->text() != nullptr){
-//       request + "[Position] = '" + ui->linePosition->text() +"'";
-//    }
-        QSqlQueryModel *qModel  = new QSqlQueryModel;
-//        qModel->setQuery(QSqlQuery("USE " + *this->databaseName +
-//                         " SELECT * FROM " + *this->tableName +
-//                         " WHERE Gender = 'Ч'",*dbEmp));
-        //QSqlQuery *query = new QSqlQuery(*dbEmp);
 
-        qModel->setQuery("USE " + *this->databaseName + " SELECT * FROM " + *this->tableName + " WHERE Gender = 'Ч'");
-//        qModel->setHeaderData(0 ,Qt::Horizontal,"ID");
-        
-        if(request != ""){
-            //ui->tableEmploee->setModel(sqlmodel);
-            //ui->tableEmploee->update();
-        }
+
+    sqlmodel->setFilter(QString(" WHERE " + requestName + requestSurname + requestGender + requestPosition));
+    sqlmodel->select();
+
 }
 
 

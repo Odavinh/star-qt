@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>592</width>
-    <height>489</height>
+    <width>620</width>
+    <height>520</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -46,16 +46,19 @@ color:#FFE53E;
 border:0px solid #FFFFFF;
 }</string>
      </property>
-     <property name="currentIndex">
+     <property name="lineWidth">
       <number>1</number>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Emploee">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>592</width>
-        <height>435</height>
+        <width>620</width>
+        <height>439</height>
        </rect>
       </property>
       <attribute name="label">
@@ -76,6 +79,9 @@ border:0px solid #FFFFFF;
        </property>
        <item row="2" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="leftMargin">
+          <number>6</number>
+         </property>
          <item>
           <widget class="QPushButton" name="add_row">
            <property name="minimumSize">
@@ -304,10 +310,42 @@ border:0px solid #FFFFFF;
           <number>6</number>
          </property>
          <item row="1" column="0">
-          <widget class="QLineEdit" name="lineName"/>
+          <widget class="QLineEdit" name="lineName">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+           </property>
+          </widget>
          </item>
          <item row="1" column="4">
-          <widget class="QLineEdit" name="linePosition"/>
+          <widget class="QLineEdit" name="linePosition">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+           </property>
+          </widget>
          </item>
          <item row="1" column="5">
           <widget class="QPushButton" name="buttoSearch">
@@ -342,6 +380,9 @@ border:0px solid #FFFFFF;
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_name">
+           <property name="styleSheet">
+            <string notr="true">color:#00AC14;</string>
+           </property>
            <property name="text">
             <string>Імя</string>
            </property>
@@ -349,16 +390,38 @@ border:0px solid #FFFFFF;
          </item>
          <item row="0" column="2">
           <widget class="QLabel" name="label_surname">
+           <property name="styleSheet">
+            <string notr="true">color:#00AC14;</string>
+           </property>
            <property name="text">
             <string>Фамілія</string>
            </property>
           </widget>
          </item>
          <item row="1" column="2">
-          <widget class="QLineEdit" name="lineEditSurname"/>
+          <widget class="QLineEdit" name="lineEditSurname">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>22</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+           </property>
+          </widget>
          </item>
          <item row="0" column="4">
           <widget class="QLabel" name="label_position">
+           <property name="styleSheet">
+            <string notr="true">color:#00AC14;</string>
+           </property>
            <property name="text">
             <string>Посада</string>
            </property>
@@ -376,6 +439,9 @@ border:0px solid #FFFFFF;
          </item>
          <item row="0" column="3">
           <widget class="QLabel" name="label_Gender">
+           <property name="styleSheet">
+            <string notr="true">color:#00AC14;</string>
+           </property>
            <property name="text">
             <string>Стать</string>
            </property>
@@ -385,13 +451,18 @@ border:0px solid #FFFFFF;
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="Enimals">
+      <attribute name="label">
+       <string>База даних тварин на фермі</string>
+      </attribute>
+     </widget>
      <widget class="QWidget" name="Statistics">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>592</width>
-        <height>435</height>
+        <width>620</width>
+        <height>439</height>
        </rect>
       </property>
       <attribute name="label">

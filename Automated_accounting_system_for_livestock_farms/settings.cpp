@@ -9,7 +9,7 @@ Settings::Settings(QWidget *parent) :
     ui->setupUi(this);
 
     settings = new QSettings(this);
-    loadSettins();
+    this->loadSettins();
 
     ui->checkBox->setChecked(SetingsChangeWindow);
     ui->lineDriver->setText(*driverDB);
@@ -35,24 +35,39 @@ Settings::~Settings()
 
 bool Settings::loadSettins()
 {
-    driverDB  = new QString();
-    hostName = new QString();
-    userName = new QString();
-    pasword = new QString();
+    driverDB  = new QString(settings->value("driverDB","QODBC").toString());
+    hostName = new QString(settings->value("hostName","ODAVINH\\SQLEXPRESS").toString());
+    userName = new QString(settings->value("userName", "").toString());
+    pasword = new QString(settings->value("pasword", "").toString());
 
-    databaseName = new QString();
-    tableEmploeeName = new QString();
-    tableStatisticsName = new QString();
+    databaseName = new QString(settings->value("databaseName", "Database_of_farms").toString());
+    tableEmploeeName = new QString(settings->value("tableEmploeeName", "Employee").toString());
+    tableStatisticsName = new QString(settings->value("tableStatisticsName", "Statisticss").toString());
 
-    SetingsChangeWindow = true;
-    qDebug()<<settingsGeometryMain;
+    SetingsChangeWindow  = settings->value("SetingsChangeWindow").toBool();
+
+    settingsGeometryMain = settings->value("settingsGeometryMain").toByteArray();
+    settingsGeometyShowBD = settings->value("settingsGeometyShowBD").toByteArray();
 
     return 1;
 }
 
 bool Settings::saveSettings()
 {
+    settings->setValue("databaseName", ui->lineNameDB->text());
+    settings->setValue("tableEmploeeName", ui->lineNameEmploeeT->text());
+    settings->setValue("tableStatisticsName", ui->lineStatisticsT->text());
 
+    settings->setValue("driverDB", ui->lineDriver->text());
+    settings->setValue("hostName", ui->lineHostName->text());
+    settings->setValue("userName", ui->lineUserName->text());
+    settings->setValue("pasword", ui->linePasvord->text());
+
+    settings->setValue("SetingsChangeWindow", ui->checkBox->isChecked());
+    qDebug()<<"save "<<SetingsChangeWindow<<" "<< ui->checkBox->isChecked();
+
+    settings->setValue("settingsGeometryMain", settingsGeometryMain);
+    settings->setValue("settingsGeometyShowBD", settingsGeometyShowBD);
     return 1;
 }
 
@@ -90,6 +105,7 @@ void Settings::setSettingsGeometyShowBD(const QByteArray &value){
 
 void Settings::on_ButtonSave_clicked()
 {
+    SetingsChangeWindow = ui->checkBox->isChecked();
     saveSettings();
 }
 
@@ -108,4 +124,12 @@ void Settings::on_ButtonStandartSetings_clicked()
     ui->lineUserName->setText("");
     ui->lineStatisticsT->setText("Statisticss");
     ui->lineNameEmploeeT->setText("Employee");
+}
+
+void Settings::on_checkBox_stateChanged(int arg1)
+{
+    if(arg1 == 2)
+        SetingsChangeWindow = true;
+    else
+        SetingsChangeWindow = false;
 }

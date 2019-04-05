@@ -36,16 +36,7 @@ private:
 
     int isConectDB;
 
-    QString *driverDB;
-    QString *hostName;
-    QString *userName;
-    QString *pasword;
-
     bool SetingsChangeWindow;
-
-    QString *databaseName;
-    QString *tableEmploeeName;
-    QString *tableStatisticsName;
 
 };
 
