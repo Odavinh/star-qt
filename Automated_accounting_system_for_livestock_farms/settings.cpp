@@ -10,7 +10,6 @@ Settings::Settings(QWidget *parent) :
 
     settings = new QSettings(this);
     this->loadSettins();
-
     ui->checkBox->setChecked(SetingsChangeWindow);
     ui->lineDriver->setText(*driverDB);
     ui->lineNameDB->setText(*databaseName);
@@ -19,6 +18,7 @@ Settings::Settings(QWidget *parent) :
     ui->lineUserName->setText(*userName);
     ui->lineStatisticsT->setText(*tableStatisticsName);
     ui->lineNameEmploeeT->setText(*tableEmploeeName);
+    ui->lineNameAnimals->setText(*tableAnimalName);
 }
 
 Settings::~Settings()
@@ -43,6 +43,7 @@ bool Settings::loadSettins()
     databaseName = new QString(settings->value("databaseName", "Database_of_farms").toString());
     tableEmploeeName = new QString(settings->value("tableEmploeeName", "Employee").toString());
     tableStatisticsName = new QString(settings->value("tableStatisticsName", "Statisticss").toString());
+    tableAnimalName = new QString(settings->value("tableAnimalName","Animals").toString());
 
     SetingsChangeWindow  = settings->value("SetingsChangeWindow").toBool();
 
@@ -57,6 +58,7 @@ bool Settings::saveSettings()
     settings->setValue("databaseName", ui->lineNameDB->text());
     settings->setValue("tableEmploeeName", ui->lineNameEmploeeT->text());
     settings->setValue("tableStatisticsName", ui->lineStatisticsT->text());
+    settings->setValue("tableAnimalName", ui->lineNameAnimals->text());
 
     settings->setValue("driverDB", ui->lineDriver->text());
     settings->setValue("hostName", ui->lineHostName->text());
@@ -132,4 +134,9 @@ void Settings::on_checkBox_stateChanged(int arg1)
         SetingsChangeWindow = true;
     else
         SetingsChangeWindow = false;
+}
+
+QString *Settings::getTableAnimalName() const
+{
+    return tableAnimalName;
 }

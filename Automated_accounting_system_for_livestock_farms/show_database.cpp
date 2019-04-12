@@ -3,9 +3,12 @@
 #include<QSqlError>
 #include<QSqlRecord>
 
+#define DEBUG
+
 Show_Database::Show_Database(QWidget *parent, const QString &databaseName,
                              const QString &tableName,
-                             const QString &tableNameStatistics) :
+                             const QString &tableNameStatistics,
+                             const QString & tableNameAnimals) :
     QDialog(parent),
     ui(new Ui::Show_Database)
 {
@@ -17,6 +20,7 @@ Show_Database::Show_Database(QWidget *parent, const QString &databaseName,
     *this->databaseName = databaseName;
     *this->tableNameStatistics = tableNameStatistics;
     *this->tableName = tableName;
+    *this->tableNameAnimals = tableNameAnimals;
 
     tableEmploeeModified = false;
     tableStatisticsModified = false;
@@ -31,6 +35,13 @@ Show_Database::Show_Database(QWidget *parent, const QString &databaseName,
 
     chnTblStc = new ChangeTableStatisticss();
     chnTblStc->setParent(this,Qt::Window);
+
+    chnTblAn = new ChangeTableAnimals();
+    chnTblAn->setParent(this,Qt::Window);
+
+    ui->BoxEnProfitMax->setMaximum(10000);
+    ui->BoxEnProfitMin->setMinimum(-100);
+    ui->BoxEnSpendingMax->setMaximum(10000);
 
 }
 int Show_Database::conect_dataBase(const QString &driver,
@@ -51,44 +62,51 @@ int Show_Database::conect_dataBase(const QString &driver,
         dbEmp.setPassword(pasword);
 
     if(!dbEmp.open()){
+#ifdef DEBUG
         qDebug() << dbEmp.lastError().text();
+#endif // DEBUG
         QMessageBox::critical(this,"Error DataBase",dbEmp.lastError().text());
         return 1;
     }
     else{
+#ifdef DEBUG
         qDebug()<<"open db";
+#endif
         modelStatistis = new QSqlTableModel(this,dbEmp);
         sqlmodel = new QSqlTableModel(this,dbEmp);
+        modelAnimals = new QSqlTableModel(this, dbEmp);
     }
     return 0;
 }
-
-int Show_Database::FullModelDataBase(){
-    sqlmodel->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    sqlmodel->setTable(*tableName);
-    if(sqlmodel->select()){
-         ui->tableEmploee->setModel(sqlmodel);
-         chnTblEmpl->setModel(sqlmodel, RowAdd);
+template< typename T>
+bool Show_Database::fullModelDataBase(QTableView  *table, T change,QSqlTableModel *model, const QString *tabeName)
+{
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    model->setTable(*tabeName);
+    if(model->select()){
+         table->setModel(model);
+         change->setModel(model, RowAdd);
     }else{
         QMessageBox::critical(this, "Error",sqlmodel->lastError().text());
         return 1;
     }
-    ui->toolBox->setCurrentIndex(0);
-    return 0;
-}
-int Show_Database::FullModelDataBaseStatistics(){
-    modelStatistis->setEditStrategy(QSqlTableModel::OnManualSubmit);
-    modelStatistis->setTable(*tableNameStatistics);
-    if(modelStatistis->select()){
-        chnTblStc->setModel(modelStatistis);
-        ui->tableStatistics->setModel(modelStatistis);
-    }else {
-       QMessageBox::critical(this,"Error",modelStatistis->lastError().text());
-       return 1;
-    }
     return 0;
 }
 
+bool Show_Database::showFullModelDataBase(){
+
+    fullModelDataBase(ui->tableEmploee, chnTblEmpl, sqlmodel, tableName);
+    ui->label_name->setText(sqlmodel->headerData(1, Qt::Horizontal, Qt::DisplayRole).toString());
+    ui->label_surname->setText(sqlmodel->headerData(2, Qt::Horizontal, Qt::DisplayRole).toString());
+    ui->label_Gender->setText(sqlmodel->headerData(3, Qt::Horizontal, Qt::DisplayRole).toString());
+    ui->label_position->setText(sqlmodel->headerData(5, Qt::Horizontal, Qt::DisplayRole).toString());
+
+    fullModelDataBase(ui->tableStatistics, chnTblStc, modelStatistis, tableNameStatistics);
+
+    fullModelDataBase(ui->tableAnimals, chnTblAn ,modelAnimals, tableNameAnimals);
+    ui->toolBox->setCurrentIndex(0);
+    return 0;
+}
 
 void Show_Database::closeEvent(QCloseEvent *event){
     if(tableEmploeeModified || tableStatisticsModified){
@@ -96,7 +114,7 @@ void Show_Database::closeEvent(QCloseEvent *event){
         QMessageBox ms;
         QAbstractButton *yes = ms.addButton(tr("Так"),QMessageBox::YesRole);
         QAbstractButton *no =  ms.addButton(tr("Ні"),QMessageBox::NoRole);
-        ms.setWindowTitle("Збереження даних!");
+        ms.setWindowTitle(tr("Збереження даних!"));
         ms.setText(tr("Хочете зберегти зміни в таблиці?"));
         ms.exec();
         if(ms.clickedButton() == yes){
@@ -136,6 +154,12 @@ void Show_Database::on_pushsaveSt_clicked()
     tableStatisticsModified = false;
 }
 
+void Show_Database::on_ButtonEn_save_clicked()
+{
+    modelAnimals->submitAll();
+    tableEmploeeModified = false;
+}
+
 void Show_Database::on_Button_cancel_clicked()
 {
     sqlmodel->revertAll();
@@ -144,7 +168,13 @@ void Show_Database::on_Button_cancel_clicked()
 void Show_Database::on_pushButtonCancelSt_clicked()
 {
     modelStatistis->revertAll();
-    tableStatisticsModified = false;
+    tableEmploeeModified = false;
+}
+
+void Show_Database::on_ButtonEn_cancel_clicked()
+{
+    modelAnimals->revertAll();
+    tableEmploeeModified = false;
 }
 
 void Show_Database::on_tableEmploee_doubleClicked(const QModelIndex &index)
@@ -183,6 +213,11 @@ void Show_Database::on_clear_table_clicked()
     sqlmodel->select();
 }
 
+void Show_Database::on_ButtonEn_select_clicked()
+{
+    modelAnimals->select();
+}
+
 void Show_Database::on_add_row_clicked()
 {
     sqlmodel->insertRow(sqlmodel->rowCount());
@@ -193,11 +228,19 @@ void Show_Database::on_pushAddSt_clicked()
     modelStatistis->insertRow(modelStatistis->rowCount());
 }
 
+void Show_Database::on_ButtonEn_add_clicked()
+{
+    modelAnimals->insertRow(modelAnimals->rowCount());
+}
+
 void Show_Database::on_remove_col_clicked()
 {
     int selectRow = ui->tableEmploee->currentIndex().row();
     if(selectRow >= 0){
-         qDebug()<<"delete row:"<<sqlmodel->removeRow(selectRow);
+#ifdef DEBUG
+         qDebug()<<"delete row";
+#endif
+         sqlmodel->removeRow(selectRow);
          this->update();
     }else
          QMessageBox::information(this,"",tr("Виберіть рядок!!!"));
@@ -207,35 +250,60 @@ void Show_Database::on_pushDeleteSt_clicked()
     int selectRow = ui->tableStatistics->currentIndex().row();
     if(selectRow >= 0){
         modelStatistis->removeRow(selectRow);
+#ifdef DEBUG
+        qDebug()<< "Delete row";
+#endif
         ui->tableStatistics->update();
     }else
        QMessageBox::information(this,"",tr("Виберіть рядок!!!"));
 }
 
+void Show_Database::on_ButtonEn_remove_clicked()
+{
+    int selectRow = ui->tableAnimals->currentIndex().row();
+    if(selectRow >= 0){
+        modelAnimals->revertRow(selectRow);
+#ifdef DEBUG
+        qDebug()<< "Delete row";
+#endif
+        ui->tableAnimals->update();
+    }else
+        QMessageBox::information(this,"",tr("Виберіть рядок!!!"));
+}
+
 void Show_Database::on_buttoSearch_clicked()
 {
-    //    query.exec("USE " + *this->databaseName + " SELECT * FROM " + *this->tableName + " WHERE Gender = 'Ч'");
-    QString requestName = "[Name] = '" +ui->lineName->text() + "'";
+    QString requestName = ui->lineName->text();
     QString requestSurname = ui->lineEditSurname->text();
     QString requestGender = ui->BoxGender->currentText();
     QString requestPosition = ui->linePosition->text();
 
+    if(requestGender == "Ч - Ж")
+           requestGender.clear();
+
+    if(!requestName.isEmpty())
+        requestName = sqlmodel->headerData(1, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestName+ "'";
     if(!requestSurname.isEmpty())
-        requestSurname = " AND [Surname] = '" + requestSurname + "'";
-    if(!requestGender.isEmpty())
-        requestGender = " AND [Gender] = '" + requestGender + "'";
+        requestSurname =  " AND "+ sqlmodel->headerData(2, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestSurname + "'";
+    else if(!requestSurname.isEmpty() && requestName.isEmpty())
+        requestSurname =  sqlmodel->headerData(2, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestSurname + "'";
+    if(!(requestSurname.isEmpty() && requestName.isEmpty()) && !requestGender.isEmpty())
+        requestGender = " AND " + sqlmodel->headerData(3, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestGender+ "'";
+    else if (!requestGender.isEmpty())
+         requestGender = sqlmodel->headerData(3, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestGender+ "'";
     if(!requestPosition.isEmpty())
-        requestPosition = " AND [Position] = '" + requestPosition + "'";
+        requestPosition = " AND " + sqlmodel->headerData(5, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestPosition + "'";
+    else if (requestSurname.isEmpty() && requestName.isEmpty() && requestGender.isEmpty() && !requestPosition.isEmpty())
+         requestPosition = sqlmodel->headerData(5, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestPosition + "'";
+#ifdef DEBUG
     qDebug() << requestName;
     qDebug() << requestSurname;
     qDebug() << requestGender;
     qDebug() << requestPosition;
+#endif
 
-
-
-    sqlmodel->setFilter(QString(" WHERE " + requestName + requestSurname + requestGender + requestPosition));
+    sqlmodel->setFilter(QString(requestName + requestSurname + requestGender + requestPosition));
     sqlmodel->select();
 
 }
-
 

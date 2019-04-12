@@ -16,7 +16,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     dataBase = new Show_Database(nullptr, *settings->getDatabaseName(),
                                  *settings->getTableEmploeeName(),
-                                 *settings->getTableStatisticsName());
+                                 *settings->getTableStatisticsName(),
+                                 *settings->getTableAnimalName());
     ui->progressBar->hide();
     isConectDB =  dataBase->conect_dataBase(*settings->getDriverDB(),
                                             *settings->getHostName(),
@@ -37,12 +38,11 @@ MainWindow::~MainWindow()
 void MainWindow::on_Button_db_clicked()
 {
     ui->progressBar->show();
-    ui->progressBar->setValue(0);
+    ui->progressBar->setValue(30);
     if(isConectDB == 0){
         ui->progressBar->setValue(50);
-        dataBase->FullModelDataBaseStatistics();
+        dataBase->showFullModelDataBase();
         ui->progressBar->setValue(70);
-        dataBase->FullModelDataBase();
     }
     ui->progressBar->setValue(90);
     dataBase->show();

@@ -14,7 +14,7 @@ ChangeTableStatisticss::ChangeTableStatisticss(QWidget *parent) :
     ui->BoxProfit->setMaximum(1000000);
 }
 
-void ChangeTableStatisticss::setModel(QAbstractItemModel *model){
+void ChangeTableStatisticss::setModel(QAbstractItemModel *model, const bool &RowAdd){
     mapper->setModel(model);
     mapper->addMapping(ui->dateEdit, 0);
     mapper->addMapping(ui->BoxCosts, 1);

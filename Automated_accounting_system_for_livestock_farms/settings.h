@@ -42,6 +42,8 @@ public:
 
     void setSettingsGeometyShowBD(const QByteArray &value);
 
+    QString *getTableAnimalName() const;
+
 private slots:
     void on_ButtonSave_clicked();
 
@@ -64,6 +66,7 @@ private:
     QString *databaseName;
     QString *tableEmploeeName;
     QString *tableStatisticsName;
+    QString *tableAnimalName;
 
     QSettings *settings;
 

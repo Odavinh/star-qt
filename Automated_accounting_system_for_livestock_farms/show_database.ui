@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>620</width>
+    <width>719</width>
     <height>520</height>
    </rect>
   </property>
@@ -50,14 +50,14 @@ border:0px solid #FFFFFF;
       <number>1</number>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="Emploee">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>620</width>
+        <width>719</width>
         <height>439</height>
        </rect>
       </property>
@@ -111,6 +111,9 @@ border:0px solid #FFFFFF;
            <property name="text">
             <string>Новий рядок</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -142,13 +145,16 @@ border:0px solid #FFFFFF;
            <property name="text">
             <string>Видалити рядок</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="clear_table">
            <property name="minimumSize">
             <size>
-             <width>140</width>
+             <width>120</width>
              <height>20</height>
             </size>
            </property>
@@ -171,7 +177,13 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Перезаповнити таблицю</string>
+            <string>Обновити таблицю</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
+           <property name="default">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -281,8 +293,11 @@ border:0px solid #FFFFFF;
            <property name="text">
             <string>Зберегти</string>
            </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
            <property name="default">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -376,6 +391,9 @@ border:0px solid #FFFFFF;
            <property name="text">
             <string>Знайти</string>
            </property>
+           <property name="default">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item row="0" column="0">
@@ -384,7 +402,7 @@ border:0px solid #FFFFFF;
             <string notr="true">color:#00AC14;</string>
            </property>
            <property name="text">
-            <string>Імя</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Імя&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -394,7 +412,7 @@ border:0px solid #FFFFFF;
             <string notr="true">color:#00AC14;</string>
            </property>
            <property name="text">
-            <string>Фамілія</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Прізвище&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -423,7 +441,7 @@ border:2px solid #00AC14;
             <string notr="true">color:#00AC14;</string>
            </property>
            <property name="text">
-            <string>Посада</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Посада&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -443,7 +461,7 @@ border:2px solid #00AC14;
             <string notr="true">color:#00AC14;</string>
            </property>
            <property name="text">
-            <string>Стать</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Стать&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -452,16 +470,545 @@ border:2px solid #00AC14;
       </layout>
      </widget>
      <widget class="QWidget" name="Enimals">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>719</width>
+        <height>439</height>
+       </rect>
+      </property>
       <attribute name="label">
        <string>База даних тварин на фермі</string>
       </attribute>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item row="0" column="0" colspan="3">
+        <layout class="QGridLayout" name="gridLayout_6">
+         <property name="rightMargin">
+          <number>6</number>
+         </property>
+         <property name="bottomMargin">
+          <number>6</number>
+         </property>
+         <item row="0" column="2">
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="styleSheet">
+              <string notr="true">color:#00AC14;</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;TextLabel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <property name="spacing">
+                <number>8</number>
+               </property>
+               <property name="rightMargin">
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_7">
+                 <property name="styleSheet">
+                  <string notr="true">color:#00AC14;</string>
+                 </property>
+                 <property name="text">
+                  <string>Min</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="BoxEnProfitMin">
+                 <property name="styleSheet">
+                  <string notr="true">color:#00AC14;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_10">
+               <property name="spacing">
+                <number>8</number>
+               </property>
+               <property name="rightMargin">
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_8">
+                 <property name="styleSheet">
+                  <string notr="true">color:#00AC14;</string>
+                 </property>
+                 <property name="text">
+                  <string>Max</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="BoxEnProfitMax">
+                 <property name="styleSheet">
+                  <string notr="true">color:#00AC14;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="1">
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="styleSheet">
+              <string notr="true">color:#00AC14;</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;TextLabel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <property name="spacing">
+                <number>8</number>
+               </property>
+               <property name="leftMargin">
+                <number>6</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>6</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_5">
+                 <property name="styleSheet">
+                  <string notr="true">color:#00AC14;</string>
+                 </property>
+                 <property name="text">
+                  <string>Min</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="BoxEnSpendingMin">
+                 <property name="styleSheet">
+                  <string notr="true">color:#00AC14;</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <property name="spacing">
+                <number>8</number>
+               </property>
+               <property name="rightMargin">
+                <number>6</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_6">
+                 <property name="styleSheet">
+                  <string notr="true">color:#00AC14;</string>
+                 </property>
+                 <property name="text">
+                  <string>Max</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDoubleSpinBox" name="BoxEnSpendingMax">
+                 <property name="styleSheet">
+                  <string notr="true">color:#00AC14;</string>
+                 </property>
+                 <property name="singleStep">
+                  <double>1.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="leftMargin">
+              <number>6</number>
+             </property>
+             <property name="rightMargin">
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="styleSheet">
+                <string notr="true">color:#00AC14;</string>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;TextLabel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEn_number">
+               <property name="minimumSize">
+                <size>
+                 <width>90</width>
+                 <height>22</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="styleSheet">
+                <string notr="true">color:#00AC14;</string>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;TextLabel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEn_kind">
+               <property name="minimumSize">
+                <size>
+                 <width>90</width>
+                 <height>22</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="3">
+          <widget class="QPushButton" name="ButtonEn_find">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background:#00AC14;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+
+}
+QPushButton:hover{
+background:#2DBE3B;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}
+QPushButton:pressed{
+background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}</string>
+           </property>
+           <property name="text">
+            <string>Знпйти</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="2">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <property name="leftMargin">
+          <number>6</number>
+         </property>
+         <property name="topMargin">
+          <number>6</number>
+         </property>
+         <property name="rightMargin">
+          <number>6</number>
+         </property>
+         <property name="bottomMargin">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="ButtonEn_cancel">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background:#00AC14;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+
+}
+QPushButton:hover{
+background:#2DBE3B;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}
+QPushButton:pressed{
+background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}</string>
+           </property>
+           <property name="text">
+            <string>Відмінити</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ButtonEn_save">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background:#00AC14;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+
+}
+QPushButton:hover{
+background:#2DBE3B;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}
+QPushButton:pressed{
+background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}</string>
+           </property>
+           <property name="text">
+            <string>Зберкгти</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0" colspan="3">
+        <widget class="QTableView" name="tableAnimals">
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <property name="leftMargin">
+          <number>6</number>
+         </property>
+         <property name="topMargin">
+          <number>6</number>
+         </property>
+         <property name="rightMargin">
+          <number>6</number>
+         </property>
+         <property name="bottomMargin">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="ButtonEn_add">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background:#00AC14;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+
+}
+QPushButton:hover{
+background:#2DBE3B;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}
+QPushButton:pressed{
+background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}</string>
+           </property>
+           <property name="text">
+            <string>Новий рядок</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ButtonEn_remove">
+           <property name="minimumSize">
+            <size>
+             <width>90</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background:#00AC14;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+
+}
+QPushButton:hover{
+background:#2DBE3B;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}
+QPushButton:pressed{
+background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}</string>
+           </property>
+           <property name="text">
+            <string>Видалити рядок</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ButtonEn_select">
+           <property name="minimumSize">
+            <size>
+             <width>120</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+background:#00AC14;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+
+}
+QPushButton:hover{
+background:#2DBE3B;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}
+QPushButton:pressed{
+background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}</string>
+           </property>
+           <property name="text">
+            <string>Обновити табицю</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="Statistics">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>620</width>
+        <width>719</width>
         <height>439</height>
        </rect>
       </property>
@@ -657,6 +1204,9 @@ border:0px solid #FFFFFF;
            </property>
            <property name="text">
             <string>Зберегти</string>
+           </property>
+           <property name="default">
+            <bool>true</bool>
            </property>
           </widget>
          </item>

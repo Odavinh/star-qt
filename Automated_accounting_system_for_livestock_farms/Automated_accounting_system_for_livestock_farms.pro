@@ -30,21 +30,24 @@ SOURCES += \
     show_database.cpp \
     changetableemploee.cpp \
     changetablestatisticss.cpp \
-    settings.cpp
+    settings.cpp \
+    changetableanimals.cpp
 
 HEADERS += \
         mainwindow.h \
     show_database.h \
     changetableemploee.h \
     changetablestatisticss.h \
-    settings.h
+    settings.h \
+    changetableanimals.h
 
 FORMS += \
         mainwindow.ui \
     show_database.ui \
     changetableemploee.ui \
     changetablestatisticss.ui \
-    settings.ui
+    settings.ui \
+    changetableanimals.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

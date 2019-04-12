@@ -12,6 +12,7 @@
 #include<QSqlQueryModel>
 #include"changetableemploee.h"
 #include"changetablestatisticss.h"
+#include"changetableanimals.h"
 #include"settings.h"
 
 
@@ -26,20 +27,24 @@ public:
     explicit Show_Database(QWidget *parent = nullptr,
                            const QString &databaseName = "Database_of_farms",
                            const QString &tableName = nullptr,
-                           const QString &tableNameStatistics = "Statisticss");
+                           const QString &tableNameStatistics = "Statisticss",
+                           const QString &tableNameAnimals = "Animals");
     ~Show_Database();
     int conect_dataBase(const QString & driver,
                         const QString & hostName,
                         const QString & userName,
                         const QString & pasword);
-    int FullModelDataBase();
-    int FullModelDataBaseStatistics();
-
+private:
+    template<typename T>
+    bool fullModelDataBase(QTableView  *table, T change,QSqlTableModel *moel,const QString *tabeName);
+public:
+    bool showFullModelDataBase();
     void setTableEmploeeModified(bool value);
 
     void setTableStatisticsModified(bool value);
 
 private slots:
+
     void on_Button_save_clicked();
 
     void on_Button_cancel_clicked();
@@ -66,17 +71,35 @@ private slots:
 
 
 
+    void on_ButtonEn_save_clicked();
+
+    void on_ButtonEn_cancel_clicked();
+
+    void on_ButtonEn_select_clicked();
+
+    void on_ButtonEn_remove_clicked();
+
+    void on_ButtonEn_add_clicked();
+
 private:
     Ui::Show_Database *ui;
+
     QSqlDatabase *dbEmp = new QSqlDatabase;
+
     QSqlTableModel *sqlmodel;
     QSqlTableModel *modelStatistis;
+    QSqlTableModel *modelAnimals;
+
     ChangeTableEmploee *chnTblEmpl;
     ChangeTableStatisticss *chnTblStc;
+    ChangeTableAnimals *chnTblAn;
+
     Settings *settings;
     QString *tableNameStatistics = new QString;
     QString *tableName = new QString;
+    QString *tableNameAnimals = new QString;
     QString *databaseName = new QString;
+
     bool tableEmploeeModified;
     bool tableStatisticsModified;
     bool RowAdd;

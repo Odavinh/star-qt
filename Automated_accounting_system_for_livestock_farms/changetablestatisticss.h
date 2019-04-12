@@ -15,7 +15,7 @@ class ChangeTableStatisticss : public QDialog
 public:
     explicit ChangeTableStatisticss(QWidget *parent = nullptr);
     ~ChangeTableStatisticss();
-    void setModel(QAbstractItemModel *model);
+    void setModel(QAbstractItemModel *model, const bool &RowAdd  = 0);
 
     QDataWidgetMapper *mapper;
 
