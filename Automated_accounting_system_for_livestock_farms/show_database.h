@@ -10,6 +10,7 @@
 #include<QCloseEvent>
 #include<QTableView>
 #include<QSqlQueryModel>
+#include<memory>
 #include"changetableemploee.h"
 #include"changetablestatisticss.h"
 #include"changetableanimals.h"
@@ -81,20 +82,23 @@ private slots:
 
     void on_ButtonEn_add_clicked();
 
+    void on_tableAnimals_doubleClicked(const QModelIndex &index);
+
+    void on_ButtonEn_find_clicked();
+
 private:
     Ui::Show_Database *ui;
+    std::shared_ptr <QSqlDatabase> *dbEmp;
 
-    QSqlDatabase *dbEmp = new QSqlDatabase;
-
-    QSqlTableModel *sqlmodel;
-    QSqlTableModel *modelStatistis;
-    QSqlTableModel *modelAnimals;
+    std::shared_ptr<QSqlTableModel> sqlmodel;
+    std::shared_ptr<QSqlTableModel> modelStatistis;
+    std::shared_ptr<QSqlTableModel> modelAnimals;
 
     ChangeTableEmploee *chnTblEmpl;
     ChangeTableStatisticss *chnTblStc;
     ChangeTableAnimals *chnTblAn;
 
-    Settings *settings;
+    std::shared_ptr<Settings> settings;
     QString *tableNameStatistics = new QString;
     QString *tableName = new QString;
     QString *tableNameAnimals = new QString;
@@ -102,6 +106,7 @@ private:
 
     bool tableEmploeeModified;
     bool tableStatisticsModified;
+    bool tableAnimalsModified;
     bool RowAdd;
 
     void closeEvent(QCloseEvent *event);

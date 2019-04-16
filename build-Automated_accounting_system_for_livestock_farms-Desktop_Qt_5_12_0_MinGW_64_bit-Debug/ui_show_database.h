@@ -59,7 +59,7 @@ public:
     QGridLayout *gridLayout_5;
     QGridLayout *gridLayout_6;
     QVBoxLayout *verticalLayout_6;
-    QLabel *label_4;
+    QLabel *labelEn_profit;
     QHBoxLayout *horizontalLayout_11;
     QHBoxLayout *horizontalLayout_9;
     QLabel *label_7;
@@ -68,7 +68,7 @@ public:
     QLabel *label_8;
     QDoubleSpinBox *BoxEnProfitMax;
     QVBoxLayout *verticalLayout_5;
-    QLabel *label_3;
+    QLabel *labelEn_spending;
     QHBoxLayout *horizontalLayout_7;
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_5;
@@ -78,10 +78,10 @@ public:
     QDoubleSpinBox *BoxEnSpendingMax;
     QHBoxLayout *horizontalLayout_8;
     QVBoxLayout *verticalLayout_3;
-    QLabel *label;
+    QLabel *labelEn_number;
     QLineEdit *lineEn_number;
     QVBoxLayout *verticalLayout_4;
-    QLabel *label_2;
+    QLabel *labelEn_kind;
     QLineEdit *lineEn_kind;
     QPushButton *ButtonEn_find;
     QHBoxLayout *horizontalLayout_3;
@@ -330,6 +330,7 @@ public:
 "color:#FFE53E;\n"
 "border:0px solid #FFFFFF;\n"
 "}"));
+        buttoSearch->setFlat(true);
 
         gridLayout_3->addWidget(buttoSearch, 1, 5, 1, 1);
 
@@ -382,7 +383,7 @@ public:
         toolBox->addItem(Emploee, QString::fromUtf8("\320\221\320\260\320\267\320\260 \320\264\320\260\320\275\320\270\321\205 \320\277\321\200\320\260\321\206\321\226\320\262\320\275\320\270\320\272\321\226\320\262"));
         Enimals = new QWidget();
         Enimals->setObjectName(QString::fromUtf8("Enimals"));
-        Enimals->setGeometry(QRect(0, 0, 719, 439));
+        Enimals->setGeometry(QRect(0, 0, 732, 425));
         gridLayout_5 = new QGridLayout(Enimals);
         gridLayout_5->setSpacing(0);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
@@ -392,11 +393,12 @@ public:
         gridLayout_6->setContentsMargins(-1, -1, 6, 6);
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        label_4 = new QLabel(Enimals);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
+        verticalLayout_6->setContentsMargins(3, 3, -1, -1);
+        labelEn_profit = new QLabel(Enimals);
+        labelEn_profit->setObjectName(QString::fromUtf8("labelEn_profit"));
+        labelEn_profit->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
-        verticalLayout_6->addWidget(label_4);
+        verticalLayout_6->addWidget(labelEn_profit);
 
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
@@ -413,6 +415,8 @@ public:
         BoxEnProfitMin = new QDoubleSpinBox(Enimals);
         BoxEnProfitMin->setObjectName(QString::fromUtf8("BoxEnProfitMin"));
         BoxEnProfitMin->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
+        BoxEnProfitMin->setMinimum(-100.000000000000000);
+        BoxEnProfitMin->setMaximum(1000.990000000000009);
 
         horizontalLayout_9->addWidget(BoxEnProfitMin);
 
@@ -432,6 +436,7 @@ public:
         BoxEnProfitMax = new QDoubleSpinBox(Enimals);
         BoxEnProfitMax->setObjectName(QString::fromUtf8("BoxEnProfitMax"));
         BoxEnProfitMax->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
+        BoxEnProfitMax->setMaximum(1000.990000000000009);
 
         horizontalLayout_10->addWidget(BoxEnProfitMax);
 
@@ -446,14 +451,16 @@ public:
 
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        label_3 = new QLabel(Enimals);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
+        verticalLayout_5->setContentsMargins(3, -1, -1, 0);
+        labelEn_spending = new QLabel(Enimals);
+        labelEn_spending->setObjectName(QString::fromUtf8("labelEn_spending"));
+        labelEn_spending->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
-        verticalLayout_5->addWidget(label_3);
+        verticalLayout_5->addWidget(labelEn_spending);
 
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
+        horizontalLayout_7->setContentsMargins(0, 3, -1, -1);
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(8);
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
@@ -467,6 +474,8 @@ public:
         BoxEnSpendingMin = new QDoubleSpinBox(Enimals);
         BoxEnSpendingMin->setObjectName(QString::fromUtf8("BoxEnSpendingMin"));
         BoxEnSpendingMin->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
+        BoxEnSpendingMin->setMinimum(-100.000000000000000);
+        BoxEnSpendingMin->setMaximum(1000.990000000000009);
 
         horizontalLayout_5->addWidget(BoxEnSpendingMin);
 
@@ -486,6 +495,8 @@ public:
         BoxEnSpendingMax = new QDoubleSpinBox(Enimals);
         BoxEnSpendingMax->setObjectName(QString::fromUtf8("BoxEnSpendingMax"));
         BoxEnSpendingMax->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
+        BoxEnSpendingMax->setMinimum(0.000000000000000);
+        BoxEnSpendingMax->setMaximum(10000.000000000000000);
         BoxEnSpendingMax->setSingleStep(1.000000000000000);
 
         horizontalLayout_6->addWidget(BoxEnSpendingMax);
@@ -504,11 +515,11 @@ public:
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(6, -1, 6, -1);
-        label = new QLabel(Enimals);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
+        labelEn_number = new QLabel(Enimals);
+        labelEn_number->setObjectName(QString::fromUtf8("labelEn_number"));
+        labelEn_number->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
-        verticalLayout_3->addWidget(label);
+        verticalLayout_3->addWidget(labelEn_number);
 
         lineEn_number = new QLineEdit(Enimals);
         lineEn_number->setObjectName(QString::fromUtf8("lineEn_number"));
@@ -528,11 +539,11 @@ public:
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        label_2 = new QLabel(Enimals);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
+        labelEn_kind = new QLabel(Enimals);
+        labelEn_kind->setObjectName(QString::fromUtf8("labelEn_kind"));
+        labelEn_kind->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
-        verticalLayout_4->addWidget(label_2);
+        verticalLayout_4->addWidget(labelEn_kind);
 
         lineEn_kind = new QLineEdit(Enimals);
         lineEn_kind->setObjectName(QString::fromUtf8("lineEn_kind"));
@@ -572,6 +583,7 @@ public:
 "color:#FFE53E;\n"
 "border:0px solid #FFFFFF;\n"
 "}"));
+        ButtonEn_find->setFlat(true);
 
         gridLayout_6->addWidget(ButtonEn_find, 0, 3, 1, 1);
 
@@ -850,10 +862,11 @@ public:
 
         retranslateUi(Show_Database);
 
-        toolBox->setCurrentIndex(1);
+        toolBox->setCurrentIndex(0);
         clear_table->setDefault(false);
         Button_save->setDefault(false);
         buttoSearch->setDefault(true);
+        ButtonEn_find->setDefault(true);
         pushsaveSt->setDefault(true);
 
 
@@ -874,14 +887,14 @@ public:
         label_position->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">\320\237\320\276\321\201\320\260\320\264\320\260</p></body></html>", nullptr));
         label_Gender->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">\320\241\321\202\320\260\321\202\321\214</p></body></html>", nullptr));
         toolBox->setItemText(toolBox->indexOf(Emploee), QApplication::translate("Show_Database", "\320\221\320\260\320\267\320\260 \320\264\320\260\320\275\320\270\321\205 \320\277\321\200\320\260\321\206\321\226\320\262\320\275\320\270\320\272\321\226\320\262", nullptr));
-        label_4->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", nullptr));
+        labelEn_profit->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", nullptr));
         label_7->setText(QApplication::translate("Show_Database", "Min", nullptr));
         label_8->setText(QApplication::translate("Show_Database", "Max", nullptr));
-        label_3->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", nullptr));
+        labelEn_spending->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", nullptr));
         label_5->setText(QApplication::translate("Show_Database", "Min", nullptr));
         label_6->setText(QApplication::translate("Show_Database", "Max", nullptr));
-        label->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", nullptr));
-        label_2->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", nullptr));
+        labelEn_number->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
+        labelEn_kind->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", nullptr));
         ButtonEn_find->setText(QApplication::translate("Show_Database", "\320\227\320\275\320\277\320\271\321\202\320\270", nullptr));
         ButtonEn_cancel->setText(QApplication::translate("Show_Database", "\320\222\321\226\320\264\320\274\321\226\320\275\320\270\321\202\320\270", nullptr));
         ButtonEn_save->setText(QApplication::translate("Show_Database", "\320\227\320\261\320\265\321\200\320\272\320\263\321\202\320\270", nullptr));

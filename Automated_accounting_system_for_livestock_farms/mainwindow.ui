@@ -131,7 +131,7 @@ border:0px solid #FFFFFF;
 }</string>
       </property>
       <property name="text">
-       <string>Діні працівників і Статистика</string>
+       <string>Дaні працівників і Статистика</string>
       </property>
      </widget>
     </item>
@@ -200,7 +200,7 @@ border:0px solid #FFFFFF;
 }</string>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string>Про програму</string>
       </property>
      </widget>
     </item>

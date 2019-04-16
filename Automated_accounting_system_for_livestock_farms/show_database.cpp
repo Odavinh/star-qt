@@ -14,8 +14,10 @@ Show_Database::Show_Database(QWidget *parent, const QString &databaseName,
 {
     ui->setupUi(this);
 
-    settings = new Settings;
+    settings = std::make_shared<Settings>();
     restoreGeometry(settings->getSettingsGeometyShowBD());
+
+    dbEmp = new std::shared_ptr<QSqlDatabase>;
 
     *this->databaseName = databaseName;
     *this->tableNameStatistics = tableNameStatistics;
@@ -24,6 +26,7 @@ Show_Database::Show_Database(QWidget *parent, const QString &databaseName,
 
     tableEmploeeModified = false;
     tableStatisticsModified = false;
+    tableAnimalsModified = false;
     RowAdd = false;
 
     QStringList lstGender;
@@ -43,6 +46,10 @@ Show_Database::Show_Database(QWidget *parent, const QString &databaseName,
     ui->BoxEnProfitMin->setMinimum(-100);
     ui->BoxEnSpendingMax->setMaximum(10000);
 
+    ui->BoxEnProfitMax->setValue(ui->BoxEnProfitMax->maximum());
+    ui->BoxEnProfitMin->setValue(ui->BoxEnProfitMin->minimum());
+    ui->BoxEnSpendingMax->setValue(ui->BoxEnSpendingMax->maximum());
+    ui->BoxEnSpendingMin->setValue(ui->BoxEnSpendingMin->minimum());
 }
 int Show_Database::conect_dataBase(const QString &driver,
                                    const QString &hostName,
@@ -56,9 +63,9 @@ int Show_Database::conect_dataBase(const QString &driver,
                        "Trusted_Connection=True");
 
 
-    if(userName != "")
+    if(userName.isEmpty())
          dbEmp.setUserName(userName);
-    if(pasword != "")
+    if(pasword.isEmpty())
         dbEmp.setPassword(pasword);
 
     if(!dbEmp.open()){
@@ -72,9 +79,9 @@ int Show_Database::conect_dataBase(const QString &driver,
 #ifdef DEBUG
         qDebug()<<"open db";
 #endif
-        modelStatistis = new QSqlTableModel(this,dbEmp);
-        sqlmodel = new QSqlTableModel(this,dbEmp);
-        modelAnimals = new QSqlTableModel(this, dbEmp);
+        modelStatistis = std::make_shared<QSqlTableModel>(this,dbEmp);
+        sqlmodel = std::make_shared<QSqlTableModel>(this,dbEmp);
+        modelAnimals = std::make_shared<QSqlTableModel>(this, dbEmp);
     }
     return 0;
 }
@@ -95,15 +102,20 @@ bool Show_Database::fullModelDataBase(QTableView  *table, T change,QSqlTableMode
 
 bool Show_Database::showFullModelDataBase(){
 
-    fullModelDataBase(ui->tableEmploee, chnTblEmpl, sqlmodel, tableName);
-    ui->label_name->setText(sqlmodel->headerData(1, Qt::Horizontal, Qt::DisplayRole).toString());
-    ui->label_surname->setText(sqlmodel->headerData(2, Qt::Horizontal, Qt::DisplayRole).toString());
+    fullModelDataBase(ui->tableEmploee, chnTblEmpl, sqlmodel.get(), tableName);
+    ui->label_name->setText("\t\t"+sqlmodel->headerData(1, Qt::Horizontal, Qt::DisplayRole).toString());
+    ui->label_surname->setText("\t\t"+sqlmodel->headerData(2, Qt::Horizontal, Qt::DisplayRole).toString());
     ui->label_Gender->setText(sqlmodel->headerData(3, Qt::Horizontal, Qt::DisplayRole).toString());
-    ui->label_position->setText(sqlmodel->headerData(5, Qt::Horizontal, Qt::DisplayRole).toString());
+    ui->label_position->setText("\t\t"+sqlmodel->headerData(5, Qt::Horizontal, Qt::DisplayRole).toString());
 
-    fullModelDataBase(ui->tableStatistics, chnTblStc, modelStatistis, tableNameStatistics);
+    fullModelDataBase(ui->tableStatistics, chnTblStc, modelStatistis.get(), tableNameStatistics);
 
-    fullModelDataBase(ui->tableAnimals, chnTblAn ,modelAnimals, tableNameAnimals);
+    fullModelDataBase(ui->tableAnimals, chnTblAn ,modelAnimals.get(), tableNameAnimals);
+    ui->labelEn_number->setText("\t\t"+modelAnimals->headerData(0,Qt::Horizontal, Qt::DisplayRole).toString());
+    ui->labelEn_kind->setText("\t\t"+modelAnimals->headerData(1,Qt::Horizontal, Qt::DisplayRole).toString());
+    ui->labelEn_spending->setText("\t\t"+modelAnimals->headerData(2,Qt::Horizontal, Qt::DisplayRole).toString());
+    ui->labelEn_profit->setText("\t\t"+modelAnimals->headerData(3,Qt::Horizontal, Qt::DisplayRole).toString());
+
     ui->toolBox->setCurrentIndex(0);
     return 0;
 }
@@ -132,14 +144,9 @@ void Show_Database::closeEvent(QCloseEvent *event){
 Show_Database::~Show_Database()
 {
     settings->setSettingsGeometyShowBD(saveGeometry());
-    dbEmp->close();
-    delete settings;
     delete tableNameStatistics;
     delete tableName;
     delete databaseName;
-    delete sqlmodel;
-    delete modelStatistis;
-    delete dbEmp;
     delete ui;
 }
 
@@ -198,6 +205,16 @@ void Show_Database::on_tableStatistics_doubleClicked(const QModelIndex &index)
     }
 }
 
+void Show_Database::on_tableAnimals_doubleClicked(const QModelIndex &index)
+{
+    if(index.isValid())
+        tableAnimalsModified = true;
+    if(settings->getSetingsChangeWindow()){
+        chnTblAn->mapper->setRootIndex(index);
+        chnTblAn->show();
+    }
+}
+
 void Show_Database::setTableStatisticsModified(bool value)
 {
     tableStatisticsModified = value;
@@ -210,12 +227,14 @@ void Show_Database::setTableEmploeeModified(bool value)
 
 void Show_Database::on_clear_table_clicked()
 {
+    sqlmodel->setFilter("");
     sqlmodel->select();
 }
 
 void Show_Database::on_ButtonEn_select_clicked()
 {
     modelAnimals->select();
+    modelAnimals->setFilter("");
 }
 
 void Show_Database::on_add_row_clicked()
@@ -273,27 +292,27 @@ void Show_Database::on_ButtonEn_remove_clicked()
 
 void Show_Database::on_buttoSearch_clicked()
 {
-    QString requestName = ui->lineName->text();
-    QString requestSurname = ui->lineEditSurname->text();
-    QString requestGender = ui->BoxGender->currentText();
-    QString requestPosition = ui->linePosition->text();
+    QString requestName{ui->lineName->text()};
+    QString requestSurname{ui->lineEditSurname->text()};
+    QString requestGender{ui->BoxGender->currentText()};
+    QString requestPosition{ui->linePosition->text()};
 
     if(requestGender == "Ч - Ж")
            requestGender.clear();
 
     if(!requestName.isEmpty())
         requestName = sqlmodel->headerData(1, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestName+ "'";
-    if(!requestSurname.isEmpty())
+    if(!requestSurname.isEmpty() && !requestName.isEmpty())
         requestSurname =  " AND "+ sqlmodel->headerData(2, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestSurname + "'";
-    else if(!requestSurname.isEmpty() && requestName.isEmpty())
+    else if(!requestSurname.isEmpty())
         requestSurname =  sqlmodel->headerData(2, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestSurname + "'";
     if(!(requestSurname.isEmpty() && requestName.isEmpty()) && !requestGender.isEmpty())
         requestGender = " AND " + sqlmodel->headerData(3, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestGender+ "'";
     else if (!requestGender.isEmpty())
          requestGender = sqlmodel->headerData(3, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestGender+ "'";
-    if(!requestPosition.isEmpty())
+    if(!requestSurname.isEmpty() && !requestName.isEmpty() && !requestGender.isEmpty() && !requestPosition.isEmpty())
         requestPosition = " AND " + sqlmodel->headerData(5, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestPosition + "'";
-    else if (requestSurname.isEmpty() && requestName.isEmpty() && requestGender.isEmpty() && !requestPosition.isEmpty())
+    else if (!requestPosition.isEmpty())
          requestPosition = sqlmodel->headerData(5, Qt::Horizontal, Qt::DisplayRole).toString() + "='" + requestPosition + "'";
 #ifdef DEBUG
     qDebug() << requestName;
@@ -307,3 +326,55 @@ void Show_Database::on_buttoSearch_clicked()
 
 }
 
+
+void Show_Database::on_ButtonEn_find_clicked()
+{
+    QString requestNumber{ui->lineEn_number->text()};
+    QString requestKind{ui->lineEn_kind->text()};
+    QString requestSpendingMax{ui->BoxEnSpendingMax->text()};
+    QString requestSpendingMin{ui->BoxEnSpendingMin->text()};
+    QString requestProfitingMax{ui->BoxEnProfitMax->text()};
+    QString requestProfitingMin{ui->BoxEnProfitMin->text()};
+
+    if(!requestNumber.isEmpty())
+        requestNumber = modelAnimals->headerData(0,Qt::Horizontal,Qt::DisplayRole).toString() + "='" + requestNumber + "'";
+    if(!requestKind.isEmpty() && !requestNumber.isEmpty())
+        requestKind = " AND "+ modelAnimals->headerData(1,Qt::Horizontal,Qt::DisplayRole).toString() + "='" + requestKind + "'";
+    else if(!requestKind.isEmpty())
+        requestKind = modelAnimals->headerData(1,Qt::Horizontal,Qt::DisplayRole).toString() + "='" + requestKind + "'";
+
+    if(!requestNumber.isEmpty() && !requestNumber.isEmpty()){
+        requestSpendingMax = " AND " + modelAnimals->headerData(2,Qt::Horizontal,Qt::DisplayRole).toString()
+                + " < " + requestSpendingMax.replace(",",".") + "";
+        requestSpendingMin = " AND " + modelAnimals->headerData(2,Qt::Horizontal,Qt::DisplayRole).toString()
+                + " > " + requestSpendingMin.replace(",",".") + "";
+
+        requestProfitingMax = " AND " + modelAnimals->headerData(3,Qt::Horizontal,Qt::DisplayRole).toString()
+                + " < " + requestProfitingMax.replace(",",".") + "";
+        requestProfitingMin = " AND " + modelAnimals->headerData(3,Qt::Horizontal,Qt::DisplayRole).toString()
+                + " > " + requestProfitingMin.replace(",",".") + "";
+    }
+    else{
+        requestSpendingMax = modelAnimals->headerData(2,Qt::Horizontal,Qt::DisplayRole).toString()
+                + " < " + requestSpendingMax.replace(",",".") + "";
+        requestSpendingMin = " AND " + modelAnimals->headerData(2,Qt::Horizontal,Qt::DisplayRole).toString()
+                + " > " + requestSpendingMin.replace(",",".") + "";
+
+        requestProfitingMax = " AND " + modelAnimals->headerData(3,Qt::Horizontal,Qt::DisplayRole).toString()
+                + " < " + requestProfitingMax.replace(",",".") + "";
+        requestProfitingMin = " AND " + modelAnimals->headerData(3,Qt::Horizontal,Qt::DisplayRole).toString()
+                + " > " + requestProfitingMin.replace(",",".") + "";
+    }
+
+
+#ifdef DEBUG
+    qDebug()<<requestNumber;
+    qDebug()<<requestKind;
+    qDebug()<<requestSpendingMax << " - " << requestSpendingMin;
+    qDebug()<<requestProfitingMax << " - " <<requestProfitingMin;
+#endif
+
+    modelAnimals->setFilter(QString(requestNumber + requestKind
+                                    + requestSpendingMax + requestSpendingMin
+                                    + requestProfitingMax + requestProfitingMin));
+}

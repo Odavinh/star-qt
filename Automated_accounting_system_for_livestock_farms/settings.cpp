@@ -2,13 +2,15 @@
 #include "ui_settings.h"
 #include<QDebug>
 
+#define DEBUG
+
 Settings::Settings(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Settings)
 {
     ui->setupUi(this);
 
-    settings = new QSettings(this);
+    settings = std::make_shared<QSettings>(this);
     this->loadSettins();
     ui->checkBox->setChecked(SetingsChangeWindow);
     ui->lineDriver->setText(*driverDB);
@@ -23,27 +25,20 @@ Settings::Settings(QWidget *parent) :
 
 Settings::~Settings()
 {
-    delete driverDB;
-    delete hostName;
-    delete pasword;
-    delete userName;
-    delete tableEmploeeName;
-    delete tableStatisticsName;
-    delete databaseName;
     delete ui;
 }
 
 bool Settings::loadSettins()
 {
-    driverDB  = new QString(settings->value("driverDB","QODBC").toString());
-    hostName = new QString(settings->value("hostName","ODAVINH\\SQLEXPRESS").toString());
-    userName = new QString(settings->value("userName", "").toString());
-    pasword = new QString(settings->value("pasword", "").toString());
+    driverDB  = std::make_shared<QString>(settings->value("driverDB","QODBC").toString());
+    hostName = std::make_shared<QString>(settings->value("hostName","ODAVINH\\SQLEXPRESS").toString());
+    userName = std::make_shared<QString>(settings->value("userName", "").toString());
+    pasword = std::make_shared<QString>(settings->value("pasword", "").toString());
 
-    databaseName = new QString(settings->value("databaseName", "Database_of_farms").toString());
-    tableEmploeeName = new QString(settings->value("tableEmploeeName", "Employee").toString());
-    tableStatisticsName = new QString(settings->value("tableStatisticsName", "Statisticss").toString());
-    tableAnimalName = new QString(settings->value("tableAnimalName","Animals").toString());
+    databaseName = std::make_shared<QString>(settings->value("databaseName", "Database_of_farms").toString());
+    tableEmploeeName = std::make_shared<QString>(settings->value("tableEmploeeName", "Employee").toString());
+    tableStatisticsName = std::make_shared<QString>(settings->value("tableStatisticsName", "Statisticss").toString());
+    tableAnimalName = std::make_shared<QString>(settings->value("tableAnimalName","Animals").toString());
 
     SetingsChangeWindow  = settings->value("SetingsChangeWindow").toBool();
 
@@ -66,28 +61,30 @@ bool Settings::saveSettings()
     settings->setValue("pasword", ui->linePasvord->text());
 
     settings->setValue("SetingsChangeWindow", ui->checkBox->isChecked());
+#ifdef DEBUG
     qDebug()<<"save "<<SetingsChangeWindow<<" "<< ui->checkBox->isChecked();
+#endif
 
     settings->setValue("settingsGeometryMain", settingsGeometryMain);
     settings->setValue("settingsGeometyShowBD", settingsGeometyShowBD);
     return 1;
 }
 
-QString *Settings::getDriverDB() const{return driverDB;}
+QString *Settings::getDriverDB() const{return driverDB.get();}
 
-QString *Settings::getHostName() const{return hostName;}
+QString *Settings::getHostName() const{return hostName.get();}
 
-QString *Settings::getUserName() const{ return userName;}
+QString *Settings::getUserName() const{ return userName.get();}
 
-QString *Settings::getPasword() const{return pasword;}
+QString *Settings::getPasword() const{return pasword.get();}
 
 bool Settings::getSetingsChangeWindow() const{return SetingsChangeWindow;}
 
-QString *Settings::getDatabaseName() const{return databaseName;}
+QString *Settings::getDatabaseName() const{return databaseName.get();}
 
-QString *Settings::getTableEmploeeName() const{return tableEmploeeName;}
+QString *Settings::getTableEmploeeName() const{return tableEmploeeName.get();}
 
-QString *Settings::getTableStatisticsName() const{return tableStatisticsName;}
+QString *Settings::getTableStatisticsName() const{return tableStatisticsName.get();}
 
 QByteArray Settings::getSettingsGeometryMain() const{
     return settingsGeometryMain;
@@ -138,5 +135,5 @@ void Settings::on_checkBox_stateChanged(int arg1)
 
 QString *Settings::getTableAnimalName() const
 {
-    return tableAnimalName;
+    return tableAnimalName.get();
 }

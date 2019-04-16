@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include<QAbstractItemModel>
+#include<QDataWidgetMapper>
 
 namespace Ui {
 class ChangeTableAnimals;
@@ -16,6 +17,12 @@ public:
     explicit ChangeTableAnimals(QWidget *parent = nullptr);
     ~ChangeTableAnimals();
     void setModel(QAbstractItemModel *model,const bool &RowAdd);
+    QDataWidgetMapper *mapper;
+
+private slots:
+    void on_ButtonEn_Apply_clicked();
+
+    void on_ButtonEn_exit_clicked();
 
 private:
     Ui::ChangeTableAnimals *ui;

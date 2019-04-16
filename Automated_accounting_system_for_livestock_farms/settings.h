@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include<QSettings>
+#include<memory>
 
 namespace Ui {
 class Settings;
@@ -56,19 +57,19 @@ private slots:
 private:
     Ui::Settings *ui;
 
-    QString *driverDB;
-    QString *hostName;
-    QString *userName;
-    QString *pasword;
+    std::shared_ptr<QString> driverDB;
+    std::shared_ptr<QString> hostName;
+    std::shared_ptr<QString> userName;
+    std::shared_ptr<QString> pasword;
 
     bool SetingsChangeWindow;
 
-    QString *databaseName;
-    QString *tableEmploeeName;
-    QString *tableStatisticsName;
-    QString *tableAnimalName;
+    std::shared_ptr<QString> databaseName;
+    std::shared_ptr<QString> tableEmploeeName;
+    std::shared_ptr<QString> tableStatisticsName;
+    std::shared_ptr<QString> tableAnimalName;
 
-    QSettings *settings;
+    std::shared_ptr<QSettings> settings;
 
     QByteArray settingsGeometryMain;
     QByteArray settingsGeometyShowBD;

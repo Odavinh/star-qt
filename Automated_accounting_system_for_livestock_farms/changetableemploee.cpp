@@ -27,7 +27,6 @@ void ChangeTableEmploee::setModel(QAbstractItemModel *model, const bool &RowAdd)
     if(RowAdd)
         ui->BoxID->setMinimum(model->rowCount());
 
-
     mapper->setModel(model);
     mapper->addMapping(ui->BoxID, 0);
     mapper->addMapping(ui->lineName, 1);

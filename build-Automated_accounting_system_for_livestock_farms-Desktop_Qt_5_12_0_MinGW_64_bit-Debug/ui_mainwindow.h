@@ -231,8 +231,8 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         infoButton->setText(QApplication::translate("MainWindow", "?", nullptr));
         ButtonWindowSetings->setText(QApplication::translate("MainWindow", "\320\235\320\260\320\273\320\260\321\210\321\202\321\203\320\262\320\260\320\275\320\275\321\217", nullptr));
-        Button_db->setText(QApplication::translate("MainWindow", "\320\224\321\226\320\275\321\226 \320\277\321\200\320\260\321\206\321\226\320\262\320\275\320\270\320\272\321\226\320\262 \321\226 \320\241\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\260", nullptr));
-        pushButton->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
+        Button_db->setText(QApplication::translate("MainWindow", "\320\224a\320\275\321\226 \320\277\321\200\320\260\321\206\321\226\320\262\320\275\320\270\320\272\321\226\320\262 \321\226 \320\241\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\260", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "\320\237\321\200\320\276 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\321\203", nullptr));
         ButtonExit->setText(QApplication::translate("MainWindow", "\320\222\320\270\320\271\321\202\320\270", nullptr));
     } // retranslateUi
 
