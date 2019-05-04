@@ -11,6 +11,7 @@
 #include<QTableView>
 #include<QSqlQueryModel>
 #include<memory>
+#include<QShortcut>
 #include"changetableemploee.h"
 #include"changetablestatisticss.h"
 #include"changetableanimals.h"
@@ -43,6 +44,7 @@ public:
     void setTableEmploeeModified(bool value);
 
     void setTableStatisticsModified(bool value);
+    float aggregationData(const QSqlTableModel &model,const int &col);
 
 private slots:
 
@@ -104,12 +106,16 @@ private:
     QString *tableNameAnimals = new QString;
     QString *databaseName = new QString;
 
+    QShortcut *keySave, *keyCancel, *keyAddRow, *keyDelRow, *keyfind, *keyclear;
+
     bool tableEmploeeModified;
     bool tableStatisticsModified;
     bool tableAnimalsModified;
     bool RowAdd;
 
     void closeEvent(QCloseEvent *event);
+protected:
+    virtual void hotkeys();
 };
 
 #endif // SHOW_DATABASE_H

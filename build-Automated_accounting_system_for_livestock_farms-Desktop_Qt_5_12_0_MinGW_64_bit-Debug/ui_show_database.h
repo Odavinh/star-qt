@@ -130,12 +130,32 @@ public:
 "color:#FFE53E;\n"
 "border:0px solid #FFFFFF;\n"
 "}"));
-        toolBox->setLineWidth(1);
+        toolBox->setFrameShape(QFrame::NoFrame);
+        toolBox->setFrameShadow(QFrame::Plain);
+        toolBox->setLineWidth(0);
+        toolBox->setMidLineWidth(0);
         Emploee = new QWidget();
         Emploee->setObjectName(QString::fromUtf8("Emploee"));
-        Emploee->setGeometry(QRect(0, 0, 719, 439));
+        Emploee->setGeometry(QRect(0, 0, 719, 436));
+        Emploee->setStyleSheet(QString::fromUtf8("QToolBox{\n"
+"background:#00AC14;\n"
+"color:#FFE53E;\n"
+"border:0px solid #FFFFFF;\n"
+"\n"
+"}\n"
+"QToolBox:hover{\n"
+"background:#2DBE3B;\n"
+"color:#FFE53E;\n"
+"border:0px solid #FFFFFF;\n"
+"}\n"
+"QToolBox:pressed{\n"
+"background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));\n"
+"color:#FFE53E;\n"
+"border:0px solid #FFFFFF;\n"
+"}"));
         gridLayout_2 = new QGridLayout(Emploee);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridLayout_2->setSizeConstraint(QLayout::SetDefaultConstraint);
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
@@ -383,7 +403,7 @@ public:
         toolBox->addItem(Emploee, QString::fromUtf8("\320\221\320\260\320\267\320\260 \320\264\320\260\320\275\320\270\321\205 \320\277\321\200\320\260\321\206\321\226\320\262\320\275\320\270\320\272\321\226\320\262"));
         Enimals = new QWidget();
         Enimals->setObjectName(QString::fromUtf8("Enimals"));
-        Enimals->setGeometry(QRect(0, 0, 732, 425));
+        Enimals->setGeometry(QRect(0, 0, 732, 422));
         gridLayout_5 = new QGridLayout(Enimals);
         gridLayout_5->setSpacing(0);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
@@ -732,7 +752,7 @@ public:
         toolBox->addItem(Enimals, QString::fromUtf8("\320\221\320\260\320\267\320\260 \320\264\320\260\320\275\320\270\321\205 \321\202\320\262\320\260\321\200\320\270\320\275 \320\275\320\260 \321\204\320\265\321\200\320\274\321\226"));
         Statistics = new QWidget();
         Statistics->setObjectName(QString::fromUtf8("Statistics"));
-        Statistics->setGeometry(QRect(0, 0, 719, 439));
+        Statistics->setGeometry(QRect(0, 0, 719, 436));
         gridLayout_4 = new QGridLayout(Statistics);
         gridLayout_4->setSpacing(0);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
@@ -793,6 +813,7 @@ public:
         tableStatistics = new QTableView(Statistics);
         tableStatistics->setObjectName(QString::fromUtf8("tableStatistics"));
         tableStatistics->setMinimumSize(QSize(300, 0));
+        tableStatistics->setSortingEnabled(true);
         tableStatistics->horizontalHeader()->setProperty("showSortIndicator", QVariant(true));
         tableStatistics->horizontalHeader()->setStretchLastSection(true);
 
@@ -863,6 +884,7 @@ public:
         retranslateUi(Show_Database);
 
         toolBox->setCurrentIndex(0);
+        toolBox->layout()->setSpacing(7);
         clear_table->setDefault(false);
         Button_save->setDefault(false);
         buttoSearch->setDefault(true);
@@ -876,12 +898,15 @@ public:
     void retranslateUi(QDialog *Show_Database)
     {
         Show_Database->setWindowTitle(QApplication::translate("Show_Database", "Dialog", nullptr));
-        add_row->setText(QApplication::translate("Show_Database", "\320\235\320\276\320\262\320\270\320\271 \321\200\321\217\320\264\320\276\320\272", nullptr));
-        remove_col->setText(QApplication::translate("Show_Database", "\320\222\320\270\320\264\320\260\320\273\320\270\321\202\320\270 \321\200\321\217\320\264\320\276\320\272", nullptr));
-        clear_table->setText(QApplication::translate("Show_Database", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\320\270 \321\202\320\260\320\261\320\273\320\270\321\206\321\216", nullptr));
-        Button_cancel->setText(QApplication::translate("Show_Database", "\320\222\321\226\320\264\320\274\321\226\320\275\320\270\321\202\320\270", nullptr));
-        Button_save->setText(QApplication::translate("Show_Database", "\320\227\320\261\320\265\321\200\320\265\320\263\321\202\320\270", nullptr));
-        buttoSearch->setText(QApplication::translate("Show_Database", "\320\227\320\275\320\260\320\271\321\202\320\270", nullptr));
+        add_row->setText(QApplication::translate("Show_Database", "&\320\235\320\276\320\262\320\270\320\271 \321\200\321\217\320\264\320\276\320\272", nullptr));
+        remove_col->setText(QApplication::translate("Show_Database", "&\320\222\320\270\320\264\320\260\320\273\320\270\321\202\320\270 \321\200\321\217\320\264\320\276\320\272", nullptr));
+        clear_table->setText(QApplication::translate("Show_Database", "&\320\236\320\261\320\275\320\276\320\262\320\270\321\202\320\270 \321\202\320\260\320\261\320\273\320\270\321\206\321\216", nullptr));
+        Button_cancel->setText(QApplication::translate("Show_Database", "\320\222\321\226\320\264\320\274\321\226\320\275\320\270&\321\202\320\270", nullptr));
+#ifndef QT_NO_TOOLTIP
+        Button_save->setToolTip(QApplication::translate("Show_Database", "<html><head/><body><p>ctrl + P</p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+        Button_save->setText(QApplication::translate("Show_Database", "&\320\227\320\261\320\265\321\200\320\265\320\263\321\202\320\270", nullptr));
+        buttoSearch->setText(QApplication::translate("Show_Database", "&\320\227\320\275\320\260\320\271\321\202\320\270", nullptr));
         label_name->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">\320\206\320\274\321\217</p></body></html>", nullptr));
         label_surname->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">\320\237\321\200\321\226\320\267\320\262\320\270\321\211\320\265</p></body></html>", nullptr));
         label_position->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">\320\237\320\276\321\201\320\260\320\264\320\260</p></body></html>", nullptr));
@@ -896,16 +921,16 @@ public:
         labelEn_number->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
         labelEn_kind->setText(QApplication::translate("Show_Database", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", nullptr));
         ButtonEn_find->setText(QApplication::translate("Show_Database", "\320\227\320\275\320\277\320\271\321\202\320\270", nullptr));
-        ButtonEn_cancel->setText(QApplication::translate("Show_Database", "\320\222\321\226\320\264\320\274\321\226\320\275\320\270\321\202\320\270", nullptr));
-        ButtonEn_save->setText(QApplication::translate("Show_Database", "\320\227\320\261\320\265\321\200\320\272\320\263\321\202\320\270", nullptr));
-        ButtonEn_add->setText(QApplication::translate("Show_Database", "\320\235\320\276\320\262\320\270\320\271 \321\200\321\217\320\264\320\276\320\272", nullptr));
-        ButtonEn_remove->setText(QApplication::translate("Show_Database", "\320\222\320\270\320\264\320\260\320\273\320\270\321\202\320\270 \321\200\321\217\320\264\320\276\320\272", nullptr));
-        ButtonEn_select->setText(QApplication::translate("Show_Database", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\320\270 \321\202\320\260\320\261\320\270\321\206\321\216", nullptr));
+        ButtonEn_cancel->setText(QApplication::translate("Show_Database", "\320\222\321\226\320\264\320\274\321\226\320\275\320\270&\321\202\320\270", nullptr));
+        ButtonEn_save->setText(QApplication::translate("Show_Database", "&\320\227\320\261\320\265\321\200\320\272\320\263\321\202\320\270", nullptr));
+        ButtonEn_add->setText(QApplication::translate("Show_Database", "&\320\235\320\276\320\262\320\270\320\271 \321\200\321\217\320\264\320\276\320\272", nullptr));
+        ButtonEn_remove->setText(QApplication::translate("Show_Database", "&\320\222\320\270\320\264\320\260\320\273\320\270\321\202\320\270 \321\200\321\217\320\264\320\276\320\272", nullptr));
+        ButtonEn_select->setText(QApplication::translate("Show_Database", "&\320\236\320\261\320\275\320\276\320\262\320\270\321\202\320\270 \321\202\320\260\320\261\320\270\321\206\321\216", nullptr));
         toolBox->setItemText(toolBox->indexOf(Enimals), QApplication::translate("Show_Database", "\320\221\320\260\320\267\320\260 \320\264\320\260\320\275\320\270\321\205 \321\202\320\262\320\260\321\200\320\270\320\275 \320\275\320\260 \321\204\320\265\321\200\320\274\321\226", nullptr));
-        pushAddSt->setText(QApplication::translate("Show_Database", "\320\235\320\276\320\262\320\270\320\271 \321\200\321\217\320\264\320\276\320\272", nullptr));
-        pushDeleteSt->setText(QApplication::translate("Show_Database", "\320\222\320\270\320\264\320\260\320\273\320\270\321\202\320\270 \321\200\321\217\320\264\320\276\320\272", nullptr));
-        pushsaveSt->setText(QApplication::translate("Show_Database", "\320\227\320\261\320\265\321\200\320\265\320\263\321\202\320\270", nullptr));
-        pushButtonCancelSt->setText(QApplication::translate("Show_Database", "\320\222\321\226\320\264\320\274\321\226\320\275\320\270\321\202\320\270", nullptr));
+        pushAddSt->setText(QApplication::translate("Show_Database", "&\320\235\320\276\320\262\320\270\320\271 \321\200\321\217\320\264\320\276\320\272", nullptr));
+        pushDeleteSt->setText(QApplication::translate("Show_Database", "&\320\222\320\270\320\264\320\260\320\273\320\270\321\202\320\270 \321\200\321\217\320\264\320\276\320\272", nullptr));
+        pushsaveSt->setText(QApplication::translate("Show_Database", "&\320\227\320\261\320\265\321\200\320\265\320\263\321\202\320\270", nullptr));
+        pushButtonCancelSt->setText(QApplication::translate("Show_Database", "\320\222\321\226\320\264\320\274\321\226\320\275\320\270&\321\202\320\270", nullptr));
         toolBox->setItemText(toolBox->indexOf(Statistics), QApplication::translate("Show_Database", "\320\221\320\260\320\267\320\260 \320\264\320\260\320\275\320\270\321\205 \320\265\321\204\320\265\320\272\321\202\320\270\320\262\320\275\320\276\321\201\321\202\321\226 \321\204\320\265\321\200\320\274\320\270", nullptr));
     } // retranslateUi
 

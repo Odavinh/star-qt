@@ -31,7 +31,8 @@ SOURCES += \
     changetableemploee.cpp \
     changetablestatisticss.cpp \
     settings.cpp \
-    changetableanimals.cpp
+    changetableanimals.cpp \
+    information.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +40,8 @@ HEADERS += \
     changetableemploee.h \
     changetablestatisticss.h \
     settings.h \
-    changetableanimals.h
+    changetableanimals.h \
+    information.h
 
 FORMS += \
         mainwindow.ui \
@@ -47,9 +49,12 @@ FORMS += \
     changetableemploee.ui \
     changetablestatisticss.ui \
     settings.ui \
-    changetableanimals.ui
+    changetableanimals.ui \
+    information.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES +=

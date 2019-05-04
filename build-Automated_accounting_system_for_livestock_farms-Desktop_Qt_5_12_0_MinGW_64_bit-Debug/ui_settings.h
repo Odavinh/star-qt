@@ -27,8 +27,6 @@ class Ui_Settings
 {
 public:
     QGridLayout *gridLayout;
-    QLabel *label_10;
-    QSpacerItem *verticalSpacer;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
@@ -48,10 +46,6 @@ public:
     QHBoxLayout *horizontalLayout_5;
     QLabel *label_5;
     QLineEdit *lineHostName;
-    QSpacerItem *horizontalSpacer;
-    QCheckBox *checkBox;
-    QSpacerItem *verticalSpacer_2;
-    QLabel *label_8;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_6;
     QLabel *label_6;
@@ -60,6 +54,11 @@ public:
     QLabel *label_7;
     QLineEdit *linePasvord;
     QSpacerItem *verticalSpacer_3;
+    QLabel *label_10;
+    QCheckBox *checkBox;
+    QSpacerItem *verticalSpacer_2;
+    QSpacerItem *verticalSpacer;
+    QLabel *label_8;
     QPushButton *ButtonStandartSetings;
     QHBoxLayout *horizontalLayout_8;
     QPushButton *ButtonSave;
@@ -74,15 +73,6 @@ public:
         Settings->setMinimumSize(QSize(0, 0));
         gridLayout = new QGridLayout(Settings);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        label_10 = new QLabel(Settings);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
-
-        gridLayout->addWidget(label_10, 0, 0, 1, 2);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer, 0, 2, 1, 1);
-
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         horizontalLayout = new QHBoxLayout();
@@ -238,26 +228,6 @@ public:
 
         gridLayout->addLayout(verticalLayout_2, 1, 0, 1, 2);
 
-        horizontalSpacer = new QSpacerItem(60, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer, 1, 3, 1, 1);
-
-        checkBox = new QCheckBox(Settings);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-        checkBox->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
-
-        gridLayout->addWidget(checkBox, 2, 0, 1, 2);
-
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer_2, 2, 2, 1, 1);
-
-        label_8 = new QLabel(Settings);
-        label_8->setObjectName(QString::fromUtf8("label_8"));
-        label_8->setMinimumSize(QSize(0, 0));
-
-        gridLayout->addWidget(label_8, 3, 0, 1, 3);
-
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout_6 = new QHBoxLayout();
@@ -318,6 +288,31 @@ public:
         verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout->addItem(verticalSpacer_3, 5, 1, 1, 1);
+
+        label_10 = new QLabel(Settings);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+
+        gridLayout->addWidget(label_10, 0, 0, 1, 2);
+
+        checkBox = new QCheckBox(Settings);
+        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+        checkBox->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
+
+        gridLayout->addWidget(checkBox, 2, 0, 1, 2);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_2, 2, 2, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer, 0, 2, 1, 1);
+
+        label_8 = new QLabel(Settings);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+        label_8->setMinimumSize(QSize(0, 0));
+
+        gridLayout->addWidget(label_8, 3, 0, 1, 3);
 
         ButtonStandartSetings = new QPushButton(Settings);
         ButtonStandartSetings->setObjectName(QString::fromUtf8("ButtonStandartSetings"));
@@ -400,17 +395,21 @@ public:
     void retranslateUi(QDialog *Settings)
     {
         Settings->setWindowTitle(QApplication::translate("Settings", "Dialog", nullptr));
-        label_10->setText(QApplication::translate("Settings", "<html><head/><body><p><span style=\" color:#00ac14;\">\320\236\320\261\320\276\320\262'\321\217\320\267\320\272\320\276\320\262\321\226 \320\275\320\260\320\273\320\260\321\210\321\202\321\203\320\262\320\260\320\275\320\275\321\217</span></p><p><span style=\" font-size:10pt; color:#ff0000;\">\320\227\320\274\321\226\320\275\320\270 \320\275\320\260\320\273\320\260\321\210\321\202\321\203\320\262\320\260\320\275\321\214 \320\261\320\260\320\267\320\270 \320\264\320\260\320\275\320\270\321\205 \320\261\321\203\320\264\321\203\321\202\321\214 \320\260\320\272\321\202\320\270\320\262\320\275\321\226 \320\277\321\226\321\201\320\273\321\217 \320\277\320\265\321\200\320\265\320\267\320\260\320\277\321\203\321\201\320\272\321\203 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\270!!!! </span></p></body></html>", nullptr));
         label->setText(QApplication::translate("Settings", "\320\221\320\260\320\267\320\260 \320\264\320\260\320\275\320\270\321\205                      ", nullptr));
         label_2->setText(QApplication::translate("Settings", "\320\242\320\260\320\261\320\273\320\270\321\206\321\217 \320\277\321\200\320\260\321\206\321\226\320\262\320\275\320\270\320\272\321\226\320\262      ", nullptr));
         label_9->setText(QApplication::translate("Settings", "\320\242\320\260\320\261\320\273\320\270\321\206\321\217 \320\267 \321\202\320\262\320\260\321\200\320\270\320\275\320\260\320\274\320\270     ", nullptr));
         label_3->setText(QApplication::translate("Settings", "\320\242\320\260\320\261\320\273\320\270\321\206\321\217 \320\267 \321\201\321\202\320\260\321\202\320\270\321\201\321\202\320\270\320\272\320\276\321\216 ", nullptr));
         label_4->setText(QApplication::translate("Settings", "\320\224\321\200\320\260\320\271\320\262\320\265\321\200 \320\221\320\260\320\267\320\270 \320\264\320\260\320\275\320\270\321\205      ", nullptr));
+#ifndef QT_NO_TOOLTIP
+        lineDriver->setToolTip(QApplication::translate("Settings", "<html><head/><body><p><span style=\" color:#00ac14;\">QDB2     </span><span style=\" color:#000000;\"> - IBM DB2 (\320\262\320\265\321\200\321\201\321\226\321\217 7.1 \321\226 \320\262\320\270\321\211\320\265)</span></p><p><span style=\" color:#00ac14;\">QIBASE  </span><span style=\" color:#000000;\"> - Borland InterBase</span></p><p><span style=\" color:#00ac14;\">QMYSQL </span><span style=\" color:#000000;\"> - MySQL</span></p><p><span style=\" color:#00ac14;\">QOCI</span><span style=\" color:#000000;\">       - \320\224\321\200\320\260\320\271\320\262\320\265\321\200  Oracle Call Interface</span></p><p><span style=\" color:#00ac14;\">QODBC</span><span style=\" color:#000000;\">    - Open Database Connectivity (ODBC) Microsoft SQL Server</span></p><p><span style=\" color:#00ac14;\">QPSQL </span><span style=\" color:#000000;\">    - PostgreSQL (\320\262\320\265\321\200\321\201\321\226\321\217 7.3 \321\226 \320\262\320\270\321\211\320\265)</span></p><p><span style=\" color:#00ac14;\">QSQLITE  </span><span styl"
+                        "e=\" color:#000000;\">- SQLite \320\262\320\265\321\200\321\201\321\226\321\217 3 </span></p><p><span style=\" color:#00ac14;\">QTDS</span><span style=\" color:#000000;\">       - \320\224\321\200\320\260\320\271\320\262\320\265\321\200Sybase Adaptive Server</span></p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
         label_5->setText(QApplication::translate("Settings", "\320\206\320\274'\321\217 \320\241\320\265\321\200\320\262\320\265\321\200\320\260                   ", nullptr));
-        checkBox->setText(QApplication::translate("Settings", "\320\241\321\202\320\260\320\275\320\264\320\260\321\200\321\202\320\275\321\226 \320\262\321\226\320\272\320\275\320\260 \321\200\320\265\320\264\320\260\320\263\321\203\320\262\320\260\320\275\320\275\321\217 \321\202\320\260\320\261\320\273\320\270\321\206\321\214", nullptr));
-        label_8->setText(QApplication::translate("Settings", "<html><head/><body><p align=\"center\"><span style=\" color:#aa0000;\">\320\233\320\276\320\263\321\226\320\275</span> \321\226 <span style=\" color:#aa0000;\">\320\277\320\260\321\200\320\276\320\273\321\214</span> \320\277\320\276\321\202\321\200\321\226\320\261\320\275\320\276 \320\262\320\270\320\272\320\276\321\200\320\270\321\201\321\202\320\276\320\262\321\203\320\262\320\260\321\202\320\270 \321\202\321\226\320\273\321\214\320\272\320\270 \320\277\321\200\320\270 \320\277\321\226\320\264\320\272\320\273\321\216\321\207\320\265\320\275\321\226 \320\264\320\276 \320\273\320\276\320\272\320\260\320\273\321\214\320\275\320\276\320\263\320\276 \321\201\320\265\321\200\320\262\320\265\321\200\320\260 \321\217\320\272\320\270\320\271 \320\262\320\270\320\274\320\260\320\263\320\260\321\224 \320\264\320\260\320\275\321\226 \320\277\320\260\321\200\320\260\320\274\320\265\321\202\321\200\320\270<span style=\" color:#aa0000;\">!!!</span></p></body></html>", nullptr));
         label_6->setText(QApplication::translate("Settings", "\320\233\320\276\320\263\321\226\320\275    ", nullptr));
         label_7->setText(QApplication::translate("Settings", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
+        label_10->setText(QApplication::translate("Settings", "<html><head/><body><p><span style=\" color:#00ac14;\">\320\236\320\261\320\276\320\262'\321\217\320\267\320\272\320\276\320\262\321\226 \320\275\320\260\320\273\320\260\321\210\321\202\321\203\320\262\320\260\320\275\320\275\321\217</span></p><p><span style=\" font-size:10pt; color:#ff0000;\">\320\227\320\274\321\226\320\275\320\270 \320\275\320\260\320\273\320\260\321\210\321\202\321\203\320\262\320\260\320\275\321\214 \320\261\320\260\320\267\320\270 \320\264\320\260\320\275\320\270\321\205 \320\261\321\203\320\264\321\203\321\202\321\214 \320\260\320\272\321\202\320\270\320\262\320\275\321\226 \320\277\321\226\321\201\320\273\321\217 \320\277\320\265\321\200\320\265\320\267\320\260\320\277\321\203\321\201\320\272\321\203 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\270!!!! </span></p></body></html>", nullptr));
+        checkBox->setText(QApplication::translate("Settings", "\320\241\321\202\320\260\320\275\320\264\320\260\321\200\321\202\320\275\321\226 \320\262\321\226\320\272\320\275\320\260 \321\200\320\265\320\264\320\260\320\263\321\203\320\262\320\260\320\275\320\275\321\217 \321\202\320\260\320\261\320\273\320\270\321\206\321\214", nullptr));
+        label_8->setText(QApplication::translate("Settings", "<html><head/><body><p align=\"center\"><span style=\" color:#aa0000;\">\320\233\320\276\320\263\321\226\320\275</span> \321\226 <span style=\" color:#aa0000;\">\320\277\320\260\321\200\320\276\320\273\321\214</span> \320\277\320\276\321\202\321\200\321\226\320\261\320\275\320\276 \320\262\320\270\320\272\320\276\321\200\320\270\321\201\321\202\320\276\320\262\321\203\320\262\320\260\321\202\320\270 \321\202\321\226\320\273\321\214\320\272\320\270 \320\277\321\200\320\270 \320\277\321\226\320\264\320\272\320\273\321\216\321\207\320\265\320\275\321\226 \320\264\320\276 \320\273\320\276\320\272\320\260\320\273\321\214\320\275\320\276\320\263\320\276 \321\201\320\265\321\200\320\262\320\265\321\200\320\260 \321\217\320\272\320\270\320\271 \320\262\320\270\320\274\320\260\320\263\320\260\321\224 \320\264\320\260\320\275\321\226 \320\277\320\260\321\200\320\260\320\274\320\265\321\202\321\200\320\270<span style=\" color:#aa0000;\">!!!</span></p></body></html>", nullptr));
         ButtonStandartSetings->setText(QApplication::translate("Settings", "\320\241\321\202\320\260\320\275\320\264\320\260\321\200\321\202\320\275\321\226 \320\275\320\260\320\273\320\260\321\210\321\202\321\203\320\262\320\260\320\275\320\275\321\217", nullptr));
         ButtonSave->setText(QApplication::translate("Settings", "\320\227\320\261\320\265\321\200\320\265\320\263\321\202\320\270", nullptr));
         ButtonClose->setText(QApplication::translate("Settings", "\320\222\320\270\320\271\321\202\320\270", nullptr));

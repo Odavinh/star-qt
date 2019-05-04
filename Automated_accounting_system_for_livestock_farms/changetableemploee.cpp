@@ -1,11 +1,13 @@
 #include "changetableemploee.h"
 #include "ui_changetableemploee.h"
+#include"QDate"
 
 ChangeTableEmploee::ChangeTableEmploee(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ChangeTableEmploee)
 {
     ui->setupUi(this);
+    this->setWindowTitle("AAS");
 
     mapper = new QDataWidgetMapper(this);
     mapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
@@ -14,6 +16,14 @@ ChangeTableEmploee::ChangeTableEmploee(QWidget *parent) :
     ui->BoxSalaru->setMaximum(10);
     ui->BoxSalaru->setMaximum(20000);
     ui->BoxID->setMaximum(10000);
+    ui->dateEdit->setText(QDate::currentDate().toString());
+
+    CloseKey = new QShortcut(this);
+    CloseKey->setKey(Qt::CTRL + Qt::Key_F);
+    connect(CloseKey, SIGNAL(activated()),this,SLOT(on_ButtonClose_clicked()));
+
+    ui->ButtonApply->setDefault(true);
+    ui->label->setBuddy(ui->ButtonApply);
 }
 
 ChangeTableEmploee::~ChangeTableEmploee()
@@ -24,8 +34,11 @@ ChangeTableEmploee::~ChangeTableEmploee()
 void ChangeTableEmploee::setModel(QAbstractItemModel *model, const bool &RowAdd)
 {
     this->RowAdd = RowAdd;
-    if(RowAdd)
+    if(RowAdd){
         ui->BoxID->setMinimum(model->rowCount());
+        ui->dateEdit->setEnabled(true);
+    }else
+        ui->BoxID->setEnabled(false);
 
     mapper->setModel(model);
     mapper->addMapping(ui->BoxID, 0);

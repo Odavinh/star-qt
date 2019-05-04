@@ -11,14 +11,14 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QDateEdit>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 
@@ -30,13 +30,13 @@ public:
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_4;
-    QDateEdit *dateEdit;
+    QLineEdit *dateEdit;
     QLabel *labelData;
     QHBoxLayout *horizontalLayout_2;
-    QSpinBox *BoxCosts;
+    QDoubleSpinBox *BoxCosts;
     QLabel *labelCosts;
     QHBoxLayout *horizontalLayout_3;
-    QSpinBox *BoxProfit;
+    QDoubleSpinBox *BoxProfit;
     QLabel *labelProfit;
     QHBoxLayout *horizontalLayout;
     QPushButton *ButtonApply;
@@ -58,15 +58,14 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        dateEdit = new QDateEdit(ChangeTableStatisticss);
+        dateEdit = new QLineEdit(ChangeTableStatisticss);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
-        dateEdit->setAutoFillBackground(false);
-        dateEdit->setCalendarPopup(true);
 
         horizontalLayout_4->addWidget(dateEdit);
 
         labelData = new QLabel(ChangeTableStatisticss);
         labelData->setObjectName(QString::fromUtf8("labelData"));
+        labelData->setMinimumSize(QSize(160, 0));
         labelData->setStyleSheet(QString::fromUtf8("color:#00AC14"));
 
         horizontalLayout_4->addWidget(labelData);
@@ -76,7 +75,7 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        BoxCosts = new QSpinBox(ChangeTableStatisticss);
+        BoxCosts = new QDoubleSpinBox(ChangeTableStatisticss);
         BoxCosts->setObjectName(QString::fromUtf8("BoxCosts"));
 
         horizontalLayout_2->addWidget(BoxCosts);
@@ -92,7 +91,7 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        BoxProfit = new QSpinBox(ChangeTableStatisticss);
+        BoxProfit = new QDoubleSpinBox(ChangeTableStatisticss);
         BoxProfit->setObjectName(QString::fromUtf8("BoxProfit"));
 
         horizontalLayout_3->addWidget(BoxProfit);
@@ -199,12 +198,21 @@ public:
     void retranslateUi(QDialog *ChangeTableStatisticss)
     {
         ChangeTableStatisticss->setWindowTitle(QApplication::translate("ChangeTableStatisticss", "Dialog", nullptr));
-        dateEdit->setDisplayFormat(QApplication::translate("ChangeTableStatisticss", "dd-MM-yyyy", nullptr));
-        labelData->setText(QApplication::translate("ChangeTableStatisticss", "\320\237\320\273\320\276\321\207\320\260\321\202\320\276\320\272 \321\200\320\276\320\261\320\276\321\202\320\270", nullptr));
+#ifndef QT_NO_TOOLTIP
+        dateEdit->setToolTip(QApplication::translate("ChangeTableStatisticss", "<html><head/><body><p><span style=\" color:#aa0000;\">\320\244\320\276\321\200\320\274\320\260\321\202 \320\264\320\260\321\202\320\270 </span></p><p><span style=\" font-size:12pt; color:#aa0000;\">(</span><span style=\" font-size:12pt; color:#005500;\">\320\240\320\240\320\240\320\240-\320\234\320\234-\320\224\320\224</span><span style=\" font-size:12pt; color:#aa0000;\">)</span></p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+        dateEdit->setText(QApplication::translate("ChangeTableStatisticss", "2000-11-12", nullptr));
+        labelData->setText(QApplication::translate("ChangeTableStatisticss", "\320\237\320\273\320\276\321\207\320\260\321\202\320\276\320\272 \321\200\320\276\320\261\320\276\321\202\320\270 (\320\240\320\240\320\240\320\240-\320\234\320\234-\320\224\320\224)", nullptr));
         labelCosts->setText(QApplication::translate("ChangeTableStatisticss", "\320\222\320\270\321\202\321\200\320\260\321\202\320\270", nullptr));
         labelProfit->setText(QApplication::translate("ChangeTableStatisticss", "\320\277\321\200\320\270\320\261\321\203\321\202\320\276\320\272", nullptr));
-        ButtonApply->setText(QApplication::translate("ChangeTableStatisticss", "\320\237\321\226\320\264\321\202\320\262\320\265\321\200\320\264\320\270\321\202\320\270", nullptr));
-        ButtonClose->setText(QApplication::translate("ChangeTableStatisticss", "\320\227\320\260\320\272\321\200\320\270\321\202\320\270", nullptr));
+#ifndef QT_NO_TOOLTIP
+        ButtonApply->setToolTip(QApplication::translate("ChangeTableStatisticss", "<html><head/><body><p>Enter</p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+        ButtonApply->setText(QApplication::translate("ChangeTableStatisticss", "&\320\237\321\226\320\264\321\202\320\262\320\265\321\200\320\264\320\270\321\202\320\270", nullptr));
+#ifndef QT_NO_TOOLTIP
+        ButtonClose->setToolTip(QApplication::translate("ChangeTableStatisticss", "<html><head/><body><p>ctrl+f</p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+        ButtonClose->setText(QApplication::translate("ChangeTableStatisticss", "\320\227&\320\260\320\272\321\200\320\270\321\202\320\270", nullptr));
         labelReport->setText(QApplication::translate("ChangeTableStatisticss", "\320\227\320\262\321\226\321\202", nullptr));
     } // retranslateUi
 

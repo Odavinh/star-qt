@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("AAS");
     settings = new Settings;
 
     restoreGeometry(settings->getSettingsGeometryMain());
@@ -20,17 +21,22 @@ MainWindow::MainWindow(QWidget *parent) :
                                  *settings->getTableAnimalName());
     ui->progressBar->hide();
     isConectDB =  dataBase->conect_dataBase(*settings->getDriverDB(),
-                                            *settings->getHostName(),
+                                           *settings->getHostName(),
                                             *settings->getPasword(),
                                             *settings->getUserName());
+    information = new Information;
 }
 
 MainWindow::~MainWindow()
 {
     settings->setSettingsGeometryMain(saveGeometry());
     settings->saveSettings();
+    dataBase->close();
+    information->close();
+    settings->close();
     delete settings;
     delete dataBase;
+    delete information;
     delete ui;
 }
 
@@ -57,6 +63,7 @@ void MainWindow::on_ButtonExit_clicked()
     dataBase->setTableEmploeeModified(false);
     dataBase->setTableStatisticsModified(false);
     dataBase->close();
+    information->close();
     close();
 }
 
@@ -71,4 +78,10 @@ void MainWindow::on_ButtonWindowSetings_clicked()
 {
     settings->show();
     settings->exec();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    information->show();
+    information->exec();
 }

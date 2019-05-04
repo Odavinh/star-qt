@@ -6,6 +6,7 @@
 #include<QMessageBox>
 #include"qsettings.h"
 #include"settings.h"
+#include"information.h"
 
 namespace Ui {
 class MainWindow;
@@ -29,10 +30,13 @@ private slots:
 
     void on_ButtonWindowSetings_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Show_Database *dataBase;
     Settings *settings;
+    Information *information;
 
     int isConectDB;
 

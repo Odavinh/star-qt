@@ -23,26 +23,6 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label_10">
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00ac14;&quot;&gt;Обов'язкові налаштування&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#ff0000;&quot;&gt;Зміни налаштувань бази даних будуть активні після перезапуску програми!!!! &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="1" column="0" colspan="2">
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
@@ -227,6 +207,9 @@ border:2px solid #00AC14;
            <height>16777215</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00ac14;&quot;&gt;QDB2     &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt; - IBM DB2 (версія 7.1 і вище)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#00ac14;&quot;&gt;QIBASE  &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt; - Borland InterBase&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#00ac14;&quot;&gt;QMYSQL &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt; - MySQL&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#00ac14;&quot;&gt;QOCI&lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;       - Драйвер  Oracle Call Interface&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#00ac14;&quot;&gt;QODBC&lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;    - Open Database Connectivity (ODBC) Microsoft SQL Server&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#00ac14;&quot;&gt;QPSQL &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;    - PostgreSQL (версія 7.3 і вище)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#00ac14;&quot;&gt;QSQLITE  &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- SQLite версія 3 &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#00ac14;&quot;&gt;QTDS&lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;       - ДрайверSybase Adaptive Server&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="styleSheet">
           <string notr="true">QLineEdit{
 border:1px solid #00AC14;
@@ -280,55 +263,6 @@ border:2px solid #00AC14;
       </layout>
      </item>
     </layout>
-   </item>
-   <item row="1" column="3">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>60</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="QCheckBox" name="checkBox">
-     <property name="styleSheet">
-      <string notr="true">color:#00AC14;</string>
-     </property>
-     <property name="text">
-      <string>Стандартні вікна редагування таблиць</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="3" column="0" colspan="3">
-    <widget class="QLabel" name="label_8">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aa0000;&quot;&gt;Логін&lt;/span&gt; і &lt;span style=&quot; color:#aa0000;&quot;&gt;пароль&lt;/span&gt; потрібно використовувати тільки при підключені до локального сервера який вимагає дані параметри&lt;span style=&quot; color:#aa0000;&quot;&gt;!!!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
    </item>
    <item row="4" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -428,6 +362,62 @@ border:2px solid #00AC14;
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_10">
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#00ac14;&quot;&gt;Обов'язкові налаштування&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; color:#ff0000;&quot;&gt;Зміни налаштувань бази даних будуть активні після перезапуску програми!!!! &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QCheckBox" name="checkBox">
+     <property name="styleSheet">
+      <string notr="true">color:#00AC14;</string>
+     </property>
+     <property name="text">
+      <string>Стандартні вікна редагування таблиць</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="2">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <widget class="QLabel" name="label_8">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; color:#aa0000;&quot;&gt;Логін&lt;/span&gt; і &lt;span style=&quot; color:#aa0000;&quot;&gt;пароль&lt;/span&gt; потрібно використовувати тільки при підключені до локального сервера який вимагає дані параметри&lt;span style=&quot; color:#aa0000;&quot;&gt;!!!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
    </item>
    <item row="6" column="0">
     <widget class="QPushButton" name="ButtonStandartSetings">

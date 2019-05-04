@@ -46,11 +46,23 @@ color:#FFE53E;
 border:0px solid #FFFFFF;
 }</string>
      </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
      <property name="lineWidth">
-      <number>1</number>
+      <number>0</number>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
      </property>
      <property name="currentIndex">
       <number>0</number>
+     </property>
+     <property name="tabSpacing">
+      <number>7</number>
      </property>
      <widget class="QWidget" name="Emploee">
       <property name="geometry">
@@ -58,13 +70,34 @@ border:0px solid #FFFFFF;
         <x>0</x>
         <y>0</y>
         <width>719</width>
-        <height>439</height>
+        <height>436</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QToolBox{
+background:#00AC14;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+
+}
+QToolBox:hover{
+background:#2DBE3B;
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}
+QToolBox:pressed{
+background:qlineargradient(spread:reflect, x1:0.433, y1:0, x2:0.438494, y2:0.500227, stop:0 rgba(255, 255, 255, 255), stop:0.365169 rgba(49, 196, 64, 255));
+color:#FFE53E;
+border:0px solid #FFFFFF;
+}</string>
       </property>
       <attribute name="label">
        <string>База даних працівників</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
        <property name="leftMargin">
         <number>0</number>
        </property>
@@ -90,6 +123,9 @@ border:0px solid #FFFFFF;
              <height>20</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+Y&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -109,7 +145,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Новий рядок</string>
+            <string>&amp;Новий рядок</string>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -124,6 +160,9 @@ border:0px solid #FFFFFF;
              <height>20</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+D&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -143,7 +182,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Видалити рядок</string>
+            <string>&amp;Видалити рядок</string>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -158,6 +197,9 @@ border:0px solid #FFFFFF;
              <height>20</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+J&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -177,7 +219,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Обновити таблицю</string>
+            <string>&amp;Обновити таблицю</string>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -236,6 +278,9 @@ border:0px solid #FFFFFF;
              <pointsize>10</pointsize>
             </font>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;ctrl+N&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -255,7 +300,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Відмінити</string>
+            <string>Відміни&amp;ти</string>
            </property>
           </widget>
          </item>
@@ -272,6 +317,9 @@ border:0px solid #FFFFFF;
              <pointsize>10</pointsize>
             </font>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ctrl + P&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -291,7 +339,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Зберегти</string>
+            <string>&amp;Зберегти</string>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -370,6 +418,9 @@ border:2px solid #00AC14;
              <height>20</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+F&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -389,7 +440,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Знайти</string>
+            <string>&amp;Знайти</string>
            </property>
            <property name="default">
             <bool>true</bool>
@@ -478,7 +529,7 @@ border:2px solid #00AC14;
         <x>0</x>
         <y>0</y>
         <width>732</width>
-        <height>425</height>
+        <height>422</height>
        </rect>
       </property>
       <attribute name="label">
@@ -790,6 +841,9 @@ border:2px solid #00AC14;
              <height>20</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+F&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -846,6 +900,9 @@ border:0px solid #FFFFFF;
              <height>20</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+N&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -865,7 +922,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Відмінити</string>
+            <string>Відміни&amp;ти</string>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -899,7 +956,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Зберкгти</string>
+            <string>&amp;Зберкгти</string>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -943,6 +1000,9 @@ border:0px solid #FFFFFF;
              <height>20</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+Y&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -962,7 +1022,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Новий рядок</string>
+            <string>&amp;Новий рядок</string>
            </property>
           </widget>
          </item>
@@ -974,6 +1034,9 @@ border:0px solid #FFFFFF;
              <height>20</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+N&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -993,7 +1056,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Видалити рядок</string>
+            <string>&amp;Видалити рядок</string>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -1008,6 +1071,9 @@ border:0px solid #FFFFFF;
              <height>20</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+J&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -1027,7 +1093,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Обновити табицю</string>
+            <string>&amp;Обновити табицю</string>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -1057,7 +1123,7 @@ border:0px solid #FFFFFF;
         <x>0</x>
         <y>0</y>
         <width>719</width>
-        <height>439</height>
+        <height>436</height>
        </rect>
       </property>
       <attribute name="label">
@@ -1110,6 +1176,9 @@ border:0px solid #FFFFFF;
              <height>16777215</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+Y&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -1129,7 +1198,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Новий рядок</string>
+            <string>&amp;Новий рядок</string>
            </property>
           </widget>
          </item>
@@ -1147,6 +1216,9 @@ border:0px solid #FFFFFF;
              <height>16777215</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+D&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -1166,7 +1238,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Видалити рядок</string>
+            <string>&amp;Видалити рядок</string>
            </property>
           </widget>
          </item>
@@ -1179,6 +1251,9 @@ border:0px solid #FFFFFF;
            <width>300</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
          </property>
          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
           <bool>true</bool>
@@ -1232,6 +1307,9 @@ border:0px solid #FFFFFF;
              <height>16777215</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+P&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -1251,7 +1329,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Зберегти</string>
+            <string>&amp;Зберегти</string>
            </property>
            <property name="default">
             <bool>true</bool>
@@ -1272,6 +1350,9 @@ border:0px solid #FFFFFF;
              <height>16777215</height>
             </size>
            </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;ctrl+N&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
            <property name="styleSheet">
             <string notr="true">QPushButton{
 background:#00AC14;
@@ -1291,7 +1372,7 @@ border:0px solid #FFFFFF;
 }</string>
            </property>
            <property name="text">
-            <string>Відмінити</string>
+            <string>Відміни&amp;ти</string>
            </property>
           </widget>
          </item>

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include<QDataWidgetMapper>
+#include<QShortcut>
 
 namespace Ui {
 class ChangeTableEmploee;
@@ -28,6 +29,7 @@ private slots:
 private:
     Ui::ChangeTableEmploee *ui;
     bool RowAdd;
+    QShortcut *CloseKey;
 };
 
 #endif // CHANGETABLEEMPLOEE_H

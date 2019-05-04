@@ -4,6 +4,7 @@
 #include <QDialog>
 #include<QAbstractItemModel>
 #include<QDataWidgetMapper>
+#include<QShortcut>
 
 namespace Ui {
 class ChangeTableAnimals;
@@ -26,6 +27,7 @@ private slots:
 
 private:
     Ui::ChangeTableAnimals *ui;
+    QShortcut *CloseKey;
 };
 
 #endif // CHANGETABLEANIMALS_H

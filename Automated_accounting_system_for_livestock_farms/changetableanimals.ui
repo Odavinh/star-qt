@@ -108,9 +108,12 @@
       <widget class="QPushButton" name="ButtonEn_Apply">
        <property name="minimumSize">
         <size>
-         <width>70</width>
+         <width>75</width>
          <height>20</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
@@ -131,7 +134,7 @@ border:0px solid #FFFFFF;
 }</string>
        </property>
        <property name="text">
-        <string>Підтвердити</string>
+        <string>&amp;Підтвердити</string>
        </property>
       </widget>
      </item>
@@ -143,6 +146,9 @@ border:0px solid #FFFFFF;
          <height>20</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ctrl+f&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background:#00AC14;
@@ -162,7 +168,7 @@ border:0px solid #FFFFFF;
 }</string>
        </property>
        <property name="text">
-        <string>Закрити</string>
+        <string>З&amp;акрити</string>
        </property>
       </widget>
      </item>

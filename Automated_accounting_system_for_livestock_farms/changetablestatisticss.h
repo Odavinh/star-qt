@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include<QDataWidgetMapper>
+#include<QModelIndex>
+#include<QSqlTableModel>
+#include<QShortcut>
 
 namespace Ui {
 class ChangeTableStatisticss;
@@ -16,6 +19,7 @@ public:
     explicit ChangeTableStatisticss(QWidget *parent = nullptr);
     ~ChangeTableStatisticss();
     void setModel(QAbstractItemModel *model, const bool &RowAdd  = 0);
+    void performanceData(const float &Costs, const float &Profit);
 
     QDataWidgetMapper *mapper;
 
@@ -26,6 +30,7 @@ private slots:
 
 private:
     Ui::ChangeTableStatisticss *ui;
+    QShortcut *CloseKey;
 };
 
 #endif // CHANGETABLESTATISTICSS_H

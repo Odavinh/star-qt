@@ -132,7 +132,7 @@ public:
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         ButtonEn_Apply = new QPushButton(ChangeTableAnimals);
         ButtonEn_Apply->setObjectName(QString::fromUtf8("ButtonEn_Apply"));
-        ButtonEn_Apply->setMinimumSize(QSize(70, 20));
+        ButtonEn_Apply->setMinimumSize(QSize(75, 20));
         ButtonEn_Apply->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background:#00AC14;\n"
 "color:#FFE53E;\n"
@@ -194,8 +194,14 @@ public:
         label_2->setText(QApplication::translate("ChangeTableAnimals", "Kind", nullptr));
         label_3->setText(QApplication::translate("ChangeTableAnimals", "Spending", nullptr));
         label_4->setText(QApplication::translate("ChangeTableAnimals", "Profit", nullptr));
-        ButtonEn_Apply->setText(QApplication::translate("ChangeTableAnimals", "\320\237\321\226\320\264\321\202\320\262\320\265\321\200\320\264\320\270\321\202\320\270", nullptr));
-        ButtonEn_exit->setText(QApplication::translate("ChangeTableAnimals", "\320\227\320\260\320\272\321\200\320\270\321\202\320\270", nullptr));
+#ifndef QT_NO_TOOLTIP
+        ButtonEn_Apply->setToolTip(QApplication::translate("ChangeTableAnimals", "<html><head/><body><p>Enter</p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+        ButtonEn_Apply->setText(QApplication::translate("ChangeTableAnimals", "&\320\237\321\226\320\264\321\202\320\262\320\265\321\200\320\264\320\270\321\202\320\270", nullptr));
+#ifndef QT_NO_TOOLTIP
+        ButtonEn_exit->setToolTip(QApplication::translate("ChangeTableAnimals", "<html><head/><body><p>ctrl+f</p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+        ButtonEn_exit->setText(QApplication::translate("ChangeTableAnimals", "\320\227&\320\260\320\272\321\200\320\270\321\202\320\270", nullptr));
     } // retranslateUi
 
 };

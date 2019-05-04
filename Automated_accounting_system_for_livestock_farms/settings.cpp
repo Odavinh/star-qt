@@ -9,6 +9,7 @@ Settings::Settings(QWidget *parent) :
     ui(new Ui::Settings)
 {
     ui->setupUi(this);
+    this->setWindowTitle("AAS");
 
     settings = std::make_shared<QSettings>(this);
     this->loadSettins();

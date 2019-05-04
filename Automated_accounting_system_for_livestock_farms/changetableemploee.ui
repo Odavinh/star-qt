@@ -41,6 +41,9 @@
          <height>20</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background:#00AC14;
@@ -60,7 +63,7 @@ border:0px solid #FFFFFF;
 }</string>
        </property>
        <property name="text">
-        <string>Підтвердити</string>
+        <string>&amp;Підтвердити</string>
        </property>
       </widget>
      </item>
@@ -72,6 +75,9 @@ border:0px solid #FFFFFF;
          <height>20</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ctrl+f&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
 background:#00AC14;
@@ -91,7 +97,7 @@ border:0px solid #FFFFFF;
 }</string>
        </property>
        <property name="text">
-        <string>Закрити</string>
+        <string>З&amp;акрити</string>
        </property>
       </widget>
      </item>
@@ -284,9 +290,28 @@ border:2px solid #00AC14;
       </layout>
      </item>
      <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QLabel" name="DataLabel">
+         <property name="maximumSize">
+          <size>
+           <width>160</width>
+           <height>16777215</height>
+          </size>
+         </property>
          <property name="styleSheet">
           <string notr="true">color:#00AC14;</string>
          </property>
@@ -296,22 +321,27 @@ border:2px solid #00AC14;
         </widget>
        </item>
        <item>
-        <widget class="QDateEdit" name="dateEdit">
-         <property name="dateTime">
-          <datetime>
-           <hour>0</hour>
-           <minute>0</minute>
-           <second>0</second>
-           <year>2000</year>
-           <month>1</month>
-           <day>1</day>
-          </datetime>
+        <widget class="QLineEdit" name="dateEdit">
+         <property name="maximumSize">
+          <size>
+           <width>160</width>
+           <height>160</height>
+          </size>
          </property>
-         <property name="displayFormat">
-          <string>dd-MM-yyyy</string>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#aa0000;&quot;&gt;Формат дати &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; color:#aa0000;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-size:12pt; color:#005500;&quot;&gt;РРРР-ММ-ДД&lt;/span&gt;&lt;span style=&quot; font-size:12pt; color:#aa0000;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
-         <property name="calendarPopup">
-          <bool>true</bool>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+border:1px solid #00AC14;
+
+}
+QLineEdit:hover{
+border:2px solid #00AC14;
+}</string>
+         </property>
+         <property name="text">
+          <string>2000-11-12</string>
          </property>
         </widget>
        </item>

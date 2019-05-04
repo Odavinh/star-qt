@@ -8,14 +8,16 @@
 Show_Database::Show_Database(QWidget *parent, const QString &databaseName,
                              const QString &tableName,
                              const QString &tableNameStatistics,
-                             const QString & tableNameAnimals) :
+                             const QString &tableNameAnimals) :
     QDialog(parent),
     ui(new Ui::Show_Database)
 {
     ui->setupUi(this);
+    this->setWindowTitle("AAS");
 
     settings = std::make_shared<Settings>();
     restoreGeometry(settings->getSettingsGeometyShowBD());
+    hotkeys();
 
     dbEmp = new std::shared_ptr<QSqlDatabase>;
 
@@ -116,12 +118,11 @@ bool Show_Database::showFullModelDataBase(){
     ui->labelEn_spending->setText("\t\t"+modelAnimals->headerData(2,Qt::Horizontal, Qt::DisplayRole).toString());
     ui->labelEn_profit->setText("\t\t"+modelAnimals->headerData(3,Qt::Horizontal, Qt::DisplayRole).toString());
 
-    ui->toolBox->setCurrentIndex(0);
     return 0;
 }
 
 void Show_Database::closeEvent(QCloseEvent *event){
-    if(tableEmploeeModified || tableStatisticsModified){
+    if(tableEmploeeModified || tableStatisticsModified || tableAnimalsModified){
         event->ignore();
         QMessageBox ms;
         QAbstractButton *yes = ms.addButton(tr("Так"),QMessageBox::YesRole);
@@ -141,9 +142,38 @@ void Show_Database::closeEvent(QCloseEvent *event){
     }
 }
 
+void Show_Database::hotkeys()
+{
+    keySave = new QShortcut(this);
+    keySave->setKey(Qt::CTRL + Qt::Key_P);
+    connect(keySave, SIGNAL(activated()),this, SLOT(on_Button_save_clicked()));
+
+    keyCancel = new QShortcut(this);
+    keyCancel->setKey(Qt::CTRL + Qt::Key_N);
+    connect(keyCancel, SIGNAL(activated()),this, SLOT(on_Button_cancel_clicked()));
+
+    keyAddRow = new QShortcut(this);
+    keyAddRow->setKey(Qt::CTRL + Qt::Key_Y);
+    connect(keyAddRow, SIGNAL(activated()),this, SLOT(on_add_row_clicked()));
+
+    keyDelRow = new QShortcut(this);
+    keyDelRow->setKey(Qt::CTRL + Qt::Key_D);
+    connect(keyDelRow, SIGNAL(activated()),this, SLOT(on_remove_col_clicked()));
+
+    keyfind = new QShortcut(this);
+    keyfind->setKey(Qt::CTRL + Qt::Key_F);
+    connect(keyfind, SIGNAL(activated()),this, SLOT(on_buttoSearch_clicked()));
+
+    keyclear = new QShortcut(this);
+    keyclear->setKey(Qt::CTRL + Qt::Key_J);
+    connect(keyclear, SIGNAL(activated()),this, SLOT(on_clear_table_clicked()));
+
+}
+
 Show_Database::~Show_Database()
 {
     settings->setSettingsGeometyShowBD(saveGeometry());
+    tableStatisticsModified = tableAnimalsModified =  tableEmploeeModified = false;
     delete tableNameStatistics;
     delete tableName;
     delete databaseName;
@@ -164,7 +194,7 @@ void Show_Database::on_pushsaveSt_clicked()
 void Show_Database::on_ButtonEn_save_clicked()
 {
     modelAnimals->submitAll();
-    tableEmploeeModified = false;
+    tableAnimalsModified = false;
 }
 
 void Show_Database::on_Button_cancel_clicked()
@@ -193,6 +223,7 @@ void Show_Database::on_tableEmploee_doubleClicked(const QModelIndex &index)
         chnTblEmpl->standartID(*sqlmodel);
         chnTblEmpl->mapper->setCurrentModelIndex(index);
         chnTblEmpl->show();
+        chnTblEmpl->activateWindow();
     }
 }
 void Show_Database::on_tableStatistics_doubleClicked(const QModelIndex &index)
@@ -201,7 +232,9 @@ void Show_Database::on_tableStatistics_doubleClicked(const QModelIndex &index)
         tableStatisticsModified = true;
     if(settings->getSetingsChangeWindow()){
         chnTblStc->mapper->setCurrentModelIndex(index);
+        chnTblStc->performanceData(aggregationData(*modelAnimals.get(),2), aggregationData(*modelAnimals.get(),3));
         chnTblStc->show();
+        chnTblStc->activateWindow();
     }
 }
 
@@ -210,14 +243,29 @@ void Show_Database::on_tableAnimals_doubleClicked(const QModelIndex &index)
     if(index.isValid())
         tableAnimalsModified = true;
     if(settings->getSetingsChangeWindow()){
-        chnTblAn->mapper->setRootIndex(index);
+        chnTblAn->mapper->setCurrentModelIndex(index);
         chnTblAn->show();
+        chnTblAn->activateWindow();
     }
 }
 
 void Show_Database::setTableStatisticsModified(bool value)
 {
     tableStatisticsModified = value;
+}
+
+float Show_Database::aggregationData(const QSqlTableModel &model, const int &col)
+{
+    std::shared_ptr<QModelIndex> index;
+    float data = 0;
+    for (int var = 0; var < model.rowCount(); ++var) {
+        index = std::make_shared<QModelIndex>(modelAnimals->index(var,col));
+        data += index->data().toFloat();
+    }
+#ifdef DEBUG
+    qDebug() << data;
+#endif
+    return data;
 }
 
 void Show_Database::setTableEmploeeModified(bool value)
@@ -272,7 +320,7 @@ void Show_Database::on_pushDeleteSt_clicked()
 #ifdef DEBUG
         qDebug()<< "Delete row";
 #endif
-        ui->tableStatistics->update();
+        modelStatistis.get()->select();
     }else
        QMessageBox::information(this,"",tr("Виберіть рядок!!!"));
 }
@@ -281,7 +329,7 @@ void Show_Database::on_ButtonEn_remove_clicked()
 {
     int selectRow = ui->tableAnimals->currentIndex().row();
     if(selectRow >= 0){
-        modelAnimals->revertRow(selectRow);
+        modelAnimals->removeRow(selectRow);
 #ifdef DEBUG
         qDebug()<< "Delete row";
 #endif

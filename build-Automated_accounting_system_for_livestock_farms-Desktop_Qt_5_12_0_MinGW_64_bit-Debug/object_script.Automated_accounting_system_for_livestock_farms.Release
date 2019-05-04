@@ -5,9 +5,11 @@ release/changetableemploee.o
 release/changetablestatisticss.o
 release/settings.o
 release/changetableanimals.o
+release/information.o
 release/moc_mainwindow.o
 release/moc_show_database.o
 release/moc_changetableemploee.o
 release/moc_changetablestatisticss.o
 release/moc_settings.o
 release/moc_changetableanimals.o
+release/moc_information.o

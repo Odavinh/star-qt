@@ -12,13 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QDateEdit>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QVBoxLayout>
 
@@ -54,9 +54,10 @@ public:
     QVBoxLayout *verticalLayout_2;
     QLabel *labelGender;
     QComboBox *BoxGender;
+    QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout_3;
     QLabel *DataLabel;
-    QDateEdit *dateEdit;
+    QLineEdit *dateEdit;
     QHBoxLayout *horizontalLayout_9;
     QLineEdit *LineNumber;
     QLabel *NumberLable;
@@ -274,18 +275,29 @@ public:
 
         horizontalLayout_5->addLayout(verticalLayout_2);
 
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer);
+
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         DataLabel = new QLabel(ChangeTableEmploee);
         DataLabel->setObjectName(QString::fromUtf8("DataLabel"));
+        DataLabel->setMaximumSize(QSize(160, 16777215));
         DataLabel->setStyleSheet(QString::fromUtf8("color:#00AC14;"));
 
         verticalLayout_3->addWidget(DataLabel);
 
-        dateEdit = new QDateEdit(ChangeTableEmploee);
+        dateEdit = new QLineEdit(ChangeTableEmploee);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
-        dateEdit->setDateTime(QDateTime(QDate(2000, 1, 1), QTime(0, 0, 0)));
-        dateEdit->setCalendarPopup(true);
+        dateEdit->setMaximumSize(QSize(160, 160));
+        dateEdit->setStyleSheet(QString::fromUtf8("QLineEdit{\n"
+"border:1px solid #00AC14;\n"
+"\n"
+"}\n"
+"QLineEdit:hover{\n"
+"border:2px solid #00AC14;\n"
+"}"));
 
         verticalLayout_3->addWidget(dateEdit);
 
@@ -353,8 +365,14 @@ public:
     {
         ChangeTableEmploee->setWindowTitle(QApplication::translate("ChangeTableEmploee", "Dialog", nullptr));
         labelID->setText(QApplication::translate("ChangeTableEmploee", "ID", nullptr));
-        ButtonApply->setText(QApplication::translate("ChangeTableEmploee", "\320\237\321\226\320\264\321\202\320\262\320\265\321\200\320\264\320\270\321\202\320\270", nullptr));
-        ButtonClose->setText(QApplication::translate("ChangeTableEmploee", "\320\227\320\260\320\272\321\200\320\270\321\202\320\270", nullptr));
+#ifndef QT_NO_TOOLTIP
+        ButtonApply->setToolTip(QApplication::translate("ChangeTableEmploee", "<html><head/><body><p>Enter </p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+        ButtonApply->setText(QApplication::translate("ChangeTableEmploee", "&\320\237\321\226\320\264\321\202\320\262\320\265\321\200\320\264\320\270\321\202\320\270", nullptr));
+#ifndef QT_NO_TOOLTIP
+        ButtonClose->setToolTip(QApplication::translate("ChangeTableEmploee", "<html><head/><body><p>ctrl+f</p><p><br/></p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+        ButtonClose->setText(QApplication::translate("ChangeTableEmploee", "\320\227&\320\260\320\272\321\200\320\270\321\202\320\270", nullptr));
         labelName->setText(QApplication::translate("ChangeTableEmploee", "\320\206\320\274'\321\217", nullptr));
         labelSurname->setText(QApplication::translate("ChangeTableEmploee", "\320\237\321\200\321\226\320\267\320\262\320\270\321\211\320\265", nullptr));
         LableSalary->setText(QApplication::translate("ChangeTableEmploee", "\320\227\320\260\321\200\320\277\320\273\320\260\321\202\320\260", nullptr));
@@ -365,7 +383,10 @@ public:
         BoxGender->setItemText(1, QApplication::translate("ChangeTableEmploee", "\320\226", nullptr));
 
         DataLabel->setText(QApplication::translate("ChangeTableEmploee", "\320\224\320\260\321\202\320\260 \320\275\320\260\321\200\320\276\320\264\320\266\320\265\320\275\320\275\321\217", nullptr));
-        dateEdit->setDisplayFormat(QApplication::translate("ChangeTableEmploee", "dd-MM-yyyy", nullptr));
+#ifndef QT_NO_TOOLTIP
+        dateEdit->setToolTip(QApplication::translate("ChangeTableEmploee", "<html><head/><body><p><span style=\" color:#aa0000;\">\320\244\320\276\321\200\320\274\320\260\321\202 \320\264\320\260\321\202\320\270 </span></p><p><span style=\" font-size:12pt; color:#aa0000;\">(</span><span style=\" font-size:12pt; color:#005500;\">\320\240\320\240\320\240\320\240-\320\234\320\234-\320\224\320\224</span><span style=\" font-size:12pt; color:#aa0000;\">)</span></p></body></html>", nullptr));
+#endif // QT_NO_TOOLTIP
+        dateEdit->setText(QApplication::translate("ChangeTableEmploee", "2000-11-12", nullptr));
         NumberLable->setText(QApplication::translate("ChangeTableEmploee", "\320\235\320\276\320\274\320\265\321\200 \321\202\320\265\320\273\320\265\321\204\320\276\320\275\321\203", nullptr));
         EmailLable->setText(QApplication::translate("ChangeTableEmploee", "Email", nullptr));
     } // retranslateUi
