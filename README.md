@@ -1,2 +1,3 @@
-# star-qt
+#Qt-start
+
 Test repository Qt
